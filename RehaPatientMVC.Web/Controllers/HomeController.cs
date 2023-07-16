@@ -18,6 +18,17 @@ namespace RehaPatientMVC.Web.Controllers
             return View();
         }
 
+        public IActionResult ViewListOfPatients()
+        {
+            List<Patient> list = new List<Patient>();
+            list.Add(new Patient() { Id = 1, Name = "Damian", Surname = "Poreba" });
+            list.Add(new Patient() { Id = 2, Name = "Karol", Surname = "Sułkowski" });
+            list.Add(new Patient() { Id = 3, Name = "Piotr", Surname = "Kowalski" });
+
+
+            return View(list);
+        }
+
         public IActionResult Privacy()
         {
             return View();

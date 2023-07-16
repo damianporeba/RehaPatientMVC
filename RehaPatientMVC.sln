@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehaPatientMVC.Web", "RehaPatientMVC.Web\RehaPatientMVC.Web.csproj", "{045E09FD-AB2D-415E-B3FC-C4CD8A2C1EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Web", "RehaPatientMVC.Web\RehaPatientMVC.Web.csproj", "{045E09FD-AB2D-415E-B3FC-C4CD8A2C1EB2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{095BAB02-7975-415A-9FD0-C2096D8686FF} = {095BAB02-7975-415A-9FD0-C2096D8686FF}
+		{1732253D-A176-4918-A196-3420218437EB} = {1732253D-A176-4918-A196-3420218437EB}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{6FF681FE-5E97-4B82-B90F-86C80AE3ECFF}"
 EndProject
@@ -15,13 +19,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A8B99705-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{C2F117E5-37E3-497C-BEC0-BFFF5015FB6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehaPatientMVC.Application", "RehaPatientMVC.Application\RehaPatientMVC.Application.csproj", "{1732253D-A176-4918-A196-3420218437EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Application", "RehaPatientMVC.Application\RehaPatientMVC.Application.csproj", "{1732253D-A176-4918-A196-3420218437EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EFAD0D1D-437F-4317-8D6B-7A6B51079D6E} = {EFAD0D1D-437F-4317-8D6B-7A6B51079D6E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehaPatientMVC.Domain", "RehaPatientMVC.Domain\RehaPatientMVC.Domain.csproj", "{EFAD0D1D-437F-4317-8D6B-7A6B51079D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Domain", "RehaPatientMVC.Domain\RehaPatientMVC.Domain.csproj", "{EFAD0D1D-437F-4317-8D6B-7A6B51079D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehaPatientMVC.Infrastructure", "RehaPatientMVC.Infrastructure\RehaPatientMVC.Infrastructure.csproj", "{095BAB02-7975-415A-9FD0-C2096D8686FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Infrastructure", "RehaPatientMVC.Infrastructure\RehaPatientMVC.Infrastructure.csproj", "{095BAB02-7975-415A-9FD0-C2096D8686FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EFAD0D1D-437F-4317-8D6B-7A6B51079D6E} = {EFAD0D1D-437F-4317-8D6B-7A6B51079D6E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehaPatientMVC.Test", "RehaPatientMVC.Test\RehaPatientMVC.Test.csproj", "{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Test", "RehaPatientMVC.Test\RehaPatientMVC.Test.csproj", "{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
