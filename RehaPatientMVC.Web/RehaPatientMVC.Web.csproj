@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RehaPatientMVC.Application\RehaPatientMVC.Application.csproj" />
+  </ItemGroup>
+
 </Project>
