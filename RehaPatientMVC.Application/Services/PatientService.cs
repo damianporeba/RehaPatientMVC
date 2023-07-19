@@ -10,12 +10,12 @@ namespace RehaPatientMVC.Application.Services
     public class PatientService : IPatientService
 
     {
-        public string ID { get ; set ; }
+        public string Name { get ; set ; }
 
         public string Method()
         {
-            ID = "string z implementacji IPatientService";
-            return ID;
+            Name = "Implementacja stringu imię z interfejsu IPatientService";
+            return Name;
         }
     }
 }

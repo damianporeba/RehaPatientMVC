@@ -15,14 +15,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            <th></th>
+            <th>
+                <h1>test1test1test1</h1>
+                <h2>test2test2test2</h2>
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.Id) @ViewData["TemporaryData"] test dopisku
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
