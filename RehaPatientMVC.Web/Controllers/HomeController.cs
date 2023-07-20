@@ -41,7 +41,13 @@ namespace RehaPatientMVC.Web.Controllers
             return View(list);
         }
 
-        
+        public IActionResult ViewListOfPatients2()
+        {
+            List<Patient1> list = new List<Patient1>();
+            list.Add(new Patient1(1));
+            list.Add(new Patient1(2));
+            return PartialView(list);
+        }
 
         public IActionResult Privacy()
         {
