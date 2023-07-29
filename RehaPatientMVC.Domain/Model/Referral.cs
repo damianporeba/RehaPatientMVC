@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Domain.Model
 {
-    internal class Referral
+    public class Referral
     {
     }
 }
