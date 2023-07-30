@@ -13,13 +13,14 @@ namespace RehaPatientMVC.Domain.Model
         public string Pesel { get; set; }
         public int TypeId { get; set; }
        
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
+        
 
 
 
 
         public virtual Patient patient { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Medic> Medics { get; set; }
+        
     }
 }

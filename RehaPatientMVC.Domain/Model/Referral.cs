@@ -8,5 +8,10 @@ namespace RehaPatientMVC.Domain.Model
 {
     public class Referral
     {
+        public int Id { get; set; }
+        public string ICD10 { get; set; }
+        public int AccessCode { get; set; }
+
+
     }
 }
