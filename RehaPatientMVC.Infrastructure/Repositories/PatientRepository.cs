@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Infrastructure.Repositories
 {
-    internal class PatientRepository
+    public class PatientRepository
     {
+        private readonly Context _context;
+        public PatientRepository(Context context)
+        {
+            context = _context;
+        }
+
+
     }
 }
