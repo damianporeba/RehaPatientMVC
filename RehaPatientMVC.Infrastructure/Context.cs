@@ -30,8 +30,6 @@ namespace RehaPatientMVC.Infrastructure
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-
         }
     }
 }
