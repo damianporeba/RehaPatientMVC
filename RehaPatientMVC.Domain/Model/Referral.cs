@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Domain.Model
 {
-    internal class Referral
+    public class Referral
     {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string Pesel { get; set; }
+        public string ICD10 { get; set; }
+        public int RefferalId { get; set;}
+
+        public virtual Type Type { get; set; } //relacja z typem skierowania (domowe czy stacjonarne)
+        public virtual Patient Patient { get; set; } //relacja z pacjentem 
     }
 }
