@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Infrastructure.Repositories
 {
-    internal class AddressReporitory
+    public class AddressReporitory
     {
+        private readonly Context _context;
+        public AddressReporitory(Context context)
+        {
+            context = _context;
+        }
     }
 }
