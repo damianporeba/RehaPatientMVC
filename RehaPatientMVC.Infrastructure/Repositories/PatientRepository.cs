@@ -25,7 +25,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
-
         public int AddPatient (Patient patient)
         {
             _context.patients.Add(patient);

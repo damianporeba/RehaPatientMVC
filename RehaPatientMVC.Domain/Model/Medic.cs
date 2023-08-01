@@ -12,6 +12,7 @@ namespace RehaPatientMVC.Domain.Model
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Profession { get; set; }
+        public string Degree { get; set; }
 
     }
 }

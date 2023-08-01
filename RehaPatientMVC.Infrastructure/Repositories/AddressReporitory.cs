@@ -31,7 +31,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.addresses.Remove(address);
                 _context.SaveChanges();
             }
-
         }
 
         public int UpdateAddress(Address address)
@@ -41,6 +40,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             {
                 addressUpdate = address;
             }
+            _context.SaveChanges();
             return addressUpdate.Id;
 
             
