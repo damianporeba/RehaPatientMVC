@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Domain.Interface
 
         int AddPatient(Patient patient);
 
-        IEnumerable<Patient> GetPatientByType(int typeId);
+        //IEnumerable<Patient> GetPatientByType(int typeId); narazie usunięta 04/08/23r.
 
         Patient GetPatientById(int patientId);
         

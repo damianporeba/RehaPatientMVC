@@ -12,7 +12,7 @@ using RehaPatientMVC.Infrastructure;
 namespace RehaPatientMVC.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230803190410_InitialCreate")]
+    [Migration("20230804054737_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -338,12 +338,7 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TypeId");
 
                     b.ToTable("patients");
                 });
@@ -374,33 +369,15 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                     b.Property<int>("RefferalId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PatientId");
-
-                    b.HasIndex("TypeId");
-
-                    b.ToTable("referrals");
-                });
-
-            modelBuilder.Entity("RehaPatientMVC.Domain.Model.Type", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
+                    b.Property<string>("TypeRefferal")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("types");
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("referrals");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -476,15 +453,6 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("RehaPatientMVC.Domain.Model.Patient", b =>
-                {
-                    b.HasOne("RehaPatientMVC.Domain.Model.Type", null)
-                        .WithMany("Patients")
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("RehaPatientMVC.Domain.Model.Referral", b =>
                 {
                     b.HasOne("RehaPatientMVC.Domain.Model.Patient", "Patient")
@@ -493,15 +461,7 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RehaPatientMVC.Domain.Model.Type", "Type")
-                        .WithMany("Referrals")
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Patient");
-
-                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("RehaPatientMVC.Domain.Model.Patient", b =>
@@ -509,13 +469,6 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                     b.Navigation("Addresses");
 
                     b.Navigation("Contacts");
-
-                    b.Navigation("Referrals");
-                });
-
-            modelBuilder.Entity("RehaPatientMVC.Domain.Model.Type", b =>
-                {
-                    b.Navigation("Patients");
 
                     b.Navigation("Referrals");
                 });

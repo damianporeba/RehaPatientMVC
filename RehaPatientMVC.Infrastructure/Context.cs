@@ -19,7 +19,7 @@ namespace RehaPatientMVC.Infrastructure
         public DbSet<Patient> patients { get; set; }
         public DbSet<Medic> medics { get; set; }
         public DbSet<Referral> referrals { get; set; }
-        public DbSet<Type> types { get; set; }
+        //public DbSet<Type> types { get; set; }
 
 
         public Context (DbContextOptions options) : base(options)
@@ -30,6 +30,7 @@ namespace RehaPatientMVC.Infrastructure
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
         }
     }
 }

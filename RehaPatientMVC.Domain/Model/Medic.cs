@@ -14,5 +14,7 @@ namespace RehaPatientMVC.Domain.Model
         public string Profession { get; set; }
         public string Degree { get; set; }
 
+        public virtual ICollection<Patient> Patients { get; set; }
+
     }
 }

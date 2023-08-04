@@ -32,11 +32,11 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             return patient.Id;
         }
 
-        public IEnumerable<Patient> GetPatientByType(int typeId)
-        {
-            var patients = _context.patients.Where(i=>i.TypeId == typeId);
-            return patients;
-        }
+        //public IEnumerable<Patient> GetPatientByType(int typeId)
+        //{
+        //    var patients = _context.patients.Where(i=>i.TypeId == typeId);
+        //    return patients;
+        //}
 
         public Patient GetPatientById(int patientId)
         {

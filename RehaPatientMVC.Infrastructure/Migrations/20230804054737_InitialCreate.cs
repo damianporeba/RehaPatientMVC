@@ -67,16 +67,17 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "types",
+                name: "patients",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pesel = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_types", x => x.Id);
+                    table.PrimaryKey("PK_patients", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,27 +187,6 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "patients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pesel = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TypeId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_patients", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_patients_types_TypeId",
-                        column: x => x.TypeId,
-                        principalTable: "types",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "addresses",
                 columns: table => new
                 {
@@ -261,8 +241,8 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Pesel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ICD10 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TypeRefferal = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RefferalId = table.Column<int>(type: "int", nullable: false),
-                    TypeId = table.Column<int>(type: "int", nullable: false),
                     PatientId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -272,12 +252,6 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                         name: "FK_referrals_patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "patients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_referrals_types_TypeId",
-                        column: x => x.TypeId,
-                        principalTable: "types",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -332,19 +306,9 @@ namespace RehaPatientMVC.Infrastructure.Migrations
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_patients_TypeId",
-                table: "patients",
-                column: "TypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_referrals_PatientId",
                 table: "referrals",
                 column: "PatientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_referrals_TypeId",
-                table: "referrals",
-                column: "TypeId");
         }
 
         /// <inheritdoc />
@@ -385,9 +349,6 @@ namespace RehaPatientMVC.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "patients");
-
-            migrationBuilder.DropTable(
-                name: "types");
         }
     }
 }
