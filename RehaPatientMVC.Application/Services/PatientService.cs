@@ -12,9 +12,24 @@ namespace RehaPatientMVC.Application.Services
     {
         public string Name { get ; set ; }
 
+        public static object AddPatient( )
+        {
+            throw new NotImplementedException();
+        }
+
+        public static object GetAllPatientsForList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static object GetPatientById(int patientId)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Method()
         {
-            Name = "Implementacja stringu imię z interfejsu IPatientService";
+            Name = "dupa";
             return Name;
         }
     }
