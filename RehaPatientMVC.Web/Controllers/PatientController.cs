@@ -13,8 +13,8 @@ namespace RehaPatientMVC.Web.Controllers
 
             //musi serwis przygotować dane
             //serwis musi zwrócic dane w odpowiednim formacie - nie potrzebujemy obiektu pacjenta, tylko jego niektore właściwości 
-
-            var model = PatientService.GetAllPatientsForList();
+            var patientService = new PatientService();
+            var model = patientService.GetAllPatientsForList();
 
             return View(model);
         }
@@ -28,12 +28,16 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public IActionResult AddPatient(PatientModel model)
         {
-            var id = PatientService.AddPatient(); //w nawiasie (model)
+            var patientService = new PatientService();
+
+            var id = patientService.AddPatient(); //w nawiasie (model)
             return View();
         }
         public IActionResult ViewPatient (int patientId)
         {
-            var patientModel = PatientService.GetPatientById(patientId);
+            var patientService = new PatientService();
+
+            var patientModel = patientService.ViewPatientDetails(patientId);
             return View(patientModel);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RehaPatientMVC.Application.ViewModels.Patients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace RehaPatientMVC.Application.Interfaces
     public interface IPatientService
     {
         public string Name { get; set; }
-        public string Method();
+        public string MethodDupa();
+
+        ListPatientForListVm GetAllPatientsForList();
+        int AddPatient(NewPatientVm patient);
+        PatientDetailsVm ViewPatientDetails(int customedId);
     }
 }

@@ -9,11 +9,12 @@ namespace RehaPatientMVC.Domain.Interface
 {
     public interface IPatientRepository
     {
+        
         void DeletePatient(int patientId);
 
         int AddPatient(Patient patient);
 
-        //IEnumerable<Patient> GetPatientByType(int typeId); narazie usunięta 04/08/23r.
+        IQueryable<Patient> GetAllPatients ();
 
         Patient GetPatientById(int patientId);
         
