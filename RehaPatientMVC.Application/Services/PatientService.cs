@@ -27,10 +27,6 @@ namespace RehaPatientMVC.Application.Services
             return  i = 0;
         }
 
-        public object AddPatient()   //połaczyć te dwie metody w jedno
-        {
-            throw new NotImplementedException();
-        }
 
         public ListPatientForListVm GetAllPatientsForList()
         {

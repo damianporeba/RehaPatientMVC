@@ -13,8 +13,8 @@ namespace RehaPatientMVC.Application.Interfaces
         public string Name { get; set; }
         public string MethodDupa();
 
-        ListPatientForListVm GetAllPatientsForList();
-        int AddPatient(NewPatientVm patient);
-        PatientDetailsVm ViewPatientDetails(int customedId);
+        public ListPatientForListVm GetAllPatientsForList();
+        public int AddPatient(NewPatientVm patient);
+        public PatientDetailsVm ViewPatientDetails(int customedId);
     }
 }
