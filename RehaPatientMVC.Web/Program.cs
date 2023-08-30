@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using RehaPatientMVC.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.Add
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Context>(options =>
@@ -17,6 +17,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IPatientService, PatientService>();
+
 
 
 var app = builder.Build();

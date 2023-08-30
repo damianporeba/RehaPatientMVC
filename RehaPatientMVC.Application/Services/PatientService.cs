@@ -1,6 +1,9 @@
-﻿using RehaPatientMVC.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.ViewModels.Patients;
 using RehaPatientMVC.Domain.Interface;
+using RehaPatientMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +23,7 @@ namespace RehaPatientMVC.Application.Services
         }
 
         private readonly IPatientRepository _patientRepo;
+        private readonly IMapper _mapper;
 
         public int AddPatient(NewPatientVm patient)
         {
@@ -28,27 +32,34 @@ namespace RehaPatientMVC.Application.Services
         }
 
 
-        public ListPatientForListVm GetAllPatientsForList()
+        public ListPatientForListVm GetAllPatientsForList()  //to samo co niżej ale z wykorzystaniem mappera
         {
-            var patients = _patientRepo.GetAllPatients(); //odwołanie do metody z patientrepository która zwraca pacjentów z bazydanych
-            ListPatientForListVm result = new ListPatientForListVm(); //tworzenie obiektu VM który bedzie zwracany z metody na samym końcu
-            result.Patients = new List<PatientForListVM>(); //inicjalizacja listy z obiektu wyżej 
-            foreach (var patient in patients) //pętla iterująca po wynikach listy z repo
+            var patients = _patientRepo.GetAllPatients().ProjectTo<PatientForListVM>(_mapper.ConfigurationProvider).ToList(); 
+            var patientsList = new ListPatientForListVm()
             {
-                var patientVm = new PatientForListVM() //tworzenie w każdej pętli z listy obiektu PatientForListVM, określamy właściwości obiektu takie jak w odpowiedzi z BD
-                {   
-                    Id = patient.Id, 
-                    LastName = patient.LastName, 
-                    Name = patient.Name, 
-                    Pesel = patient.Pesel
-                };
-                result.Patients.Add(patientVm); //dodawanie obiektu do listy w tej metodzie
-            }
-            result.Count = result.Patients.Count; //przypisujemy wartość jaką jest ilość wyników na liście na właściwość count w klasie ListPatientForListVm
-            return result; //zwrot całej listy wszystkich pacjentów
+                Patients = patients,
+                Count = patients.Count()
+            };
+            return patientsList;
+            
         }
 
-       
+    //    var patients = _patientRepo.GetAllPatients(); //odwołanie do metody z patientrepository która zwraca pacjentów z bazydanych
+    //    ListPatientForListVm result = new ListPatientForListVm(); //tworzenie obiektu VM który bedzie zwracany z metody na samym końcu
+    //    result.Patients = new List<PatientForListVM>(); //inicjalizacja listy z obiektu wyżej 
+    //        foreach (var patient in patients) //pętla iterująca po wynikach listy z repo
+    //        {
+    //            var patientVm = new PatientForListVM() //tworzenie w każdej pętli z listy obiektu PatientForListVM, określamy właściwości obiektu takie jak w odpowiedzi z BD
+    //            {
+    //                Id = patient.Id,
+    //                LastName = patient.LastName,
+    //                Name = patient.Name,
+    //                Pesel = patient.Pesel
+    //            };
+    //    result.Patients.Add(patientVm); //dodawanie obiektu do listy w tej metodzie
+    //        }
+    //result.Count = result.Patients.Count; //przypisujemy wartość jaką jest ilość wyników na liście na właściwość count w klasie ListPatientForListVm
+    //        return result; //zwrot całej listy wszystkich pacjentów
 
         public PatientDetailsVm ViewPatientDetails(int patientId)
         {
