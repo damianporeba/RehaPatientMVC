@@ -4,9 +4,14 @@ using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using RehaPatientMVC.Infrastructure;
+using RehaPatientMVC.Web.Configuration;
+using RehaPatientMVC.Application;
+
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.Add
+
+
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Context>(options =>
@@ -18,6 +23,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IPatientService, PatientService>();
 
+//zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
+builder.Services                 
+    .AddApplication();
 
 
 var app = builder.Build();
