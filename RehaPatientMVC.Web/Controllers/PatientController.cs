@@ -31,12 +31,12 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPatient(PatientModel model)
-        {
+        //public IActionResult AddPatient(PatientModel model)
+        //{
 
-            var id = _patientService.AddPatient(model); //w nawiasie (model)
-            return View();
-        }
+        //    var id = _patientService.AddPatient(model); //w nawiasie (model)
+        //    return View();
+        //}
         public IActionResult ViewPatient (int patientId)
         {
             var patientModel = _patientService.ViewPatientDetails(patientId);

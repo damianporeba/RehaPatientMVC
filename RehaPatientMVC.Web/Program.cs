@@ -25,7 +25,8 @@ builder.Services.AddTransient<IPatientService, PatientService>();
 
 //zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
 builder.Services                 
-    .AddApplication();
+    .AddApplication()
+    .AddInterface();
 
 
 var app = builder.Build();

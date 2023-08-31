@@ -32,16 +32,21 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             return patient.Id;
         }
 
-        //public IEnumerable<Patient> GetPatientByType(int typeId)
-        //{
-        //    var patients = _context.patients.Where(i=>i.TypeId == typeId);
-        //    return patients;
-        //}
+        public IEnumerable<Patient> GetPatientByType(int typeId)
+        {
+            var patients = _context.patients.Where(i => i.Id == typeId);
+            return patients;
+        }
 
         public Patient GetPatientById(int patientId)
         {
             var patient = _context.patients.FirstOrDefault(i=>i.Id == patientId);
             return patient;
+        }
+
+        public IQueryable<Patient> GetAllPatients()
+        {
+            throw new NotImplementedException();
         }
     }
 

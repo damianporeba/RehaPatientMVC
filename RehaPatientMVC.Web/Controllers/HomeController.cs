@@ -24,7 +24,7 @@ namespace RehaPatientMVC.Web.Controllers
         public IActionResult ViewListOfPatients()
         {
             ViewData["TemporaryData"] = "--";
-            string imie = _patientService.Method();
+            string imie = _patientService.MethodDupa();
 
             List<Patient> list = new List<Patient>();
             list.Add(new Patient() { Id = 1, Name = "Damian", Surname = "Poreba" });
