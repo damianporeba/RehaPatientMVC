@@ -22,7 +22,7 @@ namespace RehaPatientMVC.Infrastructure
         //public DbSet<Type> types { get; set; }
 
 
-        public Context (DbContextOptions options) : base(options)
+        public Context(DbContextOptions options) : base(options)
         {
 
         }

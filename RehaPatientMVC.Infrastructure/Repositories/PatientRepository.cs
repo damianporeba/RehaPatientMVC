@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
         private readonly Context _context;
         public PatientRepository(Context context)
         {
-            context = _context;
+            _context = context;
         }
 
         public void DeletePatient(int patientId)
@@ -46,7 +46,8 @@ namespace RehaPatientMVC.Infrastructure.Repositories
 
         public IQueryable<Patient> GetAllPatients()
         {
-            throw new NotImplementedException();
+            var patients = _context.patients;
+            return patients;
         }
     }
 

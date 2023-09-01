@@ -8,7 +8,7 @@ namespace RehaPatientMVC.Application.ViewModels.Patients
 {
     public class ListPatientForListVm //robimy to zeby mieć dobry schemat paginacji pacjentów na strony
     {
-        public List<PatientForListVM> Patients { get; set; }
+        public List<PatientForListVm> Patients { get; set; }
         public int Count { get; set; }
     }
 }

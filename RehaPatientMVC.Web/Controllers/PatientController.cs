@@ -7,10 +7,13 @@ namespace RehaPatientMVC.Web.Controllers
     public class PatientController : Controller
     {
         private readonly IPatientService _patientService;
+
         public PatientController(IPatientService patientService) //dependency injection 
         {
-            patientService = _patientService;
+            _patientService = patientService;
         }
+
+
         public IActionResult Index() //podstawowa akcja, wyświetla listę wszystkich pacjentów
         {
             //1. utworzyc widok dla tej akcji

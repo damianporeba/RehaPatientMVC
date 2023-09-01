@@ -19,6 +19,6 @@ namespace RehaPatientMVC.Domain.Model
         public virtual ICollection<ContactDetails> Contacts { get; set; } //dostep do sposobów kontaktów pacjenta
         public virtual ICollection<Referral> Referrals { get; set; } //dostęp do skierowania danego pacjenta ??? sprawdzić
 
-        public virtual Medic Medic { get; set; }
+        //public virtual Medic Medic { get; set; }
     }
 }

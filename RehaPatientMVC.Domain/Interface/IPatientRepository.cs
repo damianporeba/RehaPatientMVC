@@ -14,7 +14,7 @@ namespace RehaPatientMVC.Domain.Interface
 
         int AddPatient(Patient patient);
 
-        IQueryable<Patient> GetAllPatients ();
+        IQueryable<Patient> GetAllPatients();
 
         Patient GetPatientById(int patientId);
         
