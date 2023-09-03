@@ -10,9 +10,6 @@ namespace RehaPatientMVC.Application.Interfaces
 {
     public interface IPatientService
     {
-        public string Name { get; set; }
-        public string MethodDupa();
-
         public ListPatientForListVm GetAllPatientsForList();
         public int AddPatient(NewPatientVm patient);
         public PatientDetailsVm ViewPatientDetails(int customedId);

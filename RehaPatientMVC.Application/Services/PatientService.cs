@@ -15,13 +15,6 @@ namespace RehaPatientMVC.Application.Services
     public class PatientService : IPatientService
 
     {
-        public string Name { get ; set ; }
-        public string MethodDupa()
-        {
-            Name = "dupa";
-            return Name;
-        }
-
         private readonly IPatientRepository _patientRepo;
         private readonly IMapper _mapper;
 
@@ -37,12 +30,11 @@ namespace RehaPatientMVC.Application.Services
             return  i = 0;
         }
 
-
         public ListPatientForListVm GetAllPatientsForList()  //to samo co niżej ale z wykorzystaniem mappera
         {
-            var patients = _patientRepo.GetAllPatients()
-                .ProjectTo<PatientForListVm>(_mapper.ConfigurationProvider)
-                .ToList();
+          
+            var patients = _patientRepo.GetAllPatients().ProjectTo<PatientForListVm>(_mapper.ConfigurationProvider).ToList();
+
             var patientsList = new ListPatientForListVm()
             {
                 Patients = patients,

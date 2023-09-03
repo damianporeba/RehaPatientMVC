@@ -25,6 +25,7 @@ namespace RehaPatientMVC.Application.ViewModels.Patients
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
                 .ForMember(d => d.LastName, opt => opt.MapFrom(s => s.LastName))
                 .ForMember(d => d.Pesel, opt => opt.MapFrom(s => s.Pesel));
+
         }
     }
 }

@@ -21,7 +21,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IPatientService, PatientService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
 builder.Services                 
