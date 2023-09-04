@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using RehaPatientMVC.Application.Maping;
 using RehaPatientMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.ViewModels.Patients
 {
-    public class PatientForListVm : IMapFrom<RehaPatientMVC.Domain.Model.Patient>
+    public class PatientForListVm
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -17,15 +16,15 @@ namespace RehaPatientMVC.Application.ViewModels.Patients
         public string Pesel { get; set; }
 
        
-        public void Mapping (Profile profile)
-        {
+        //public void Mapping (Profile profile)
+        //{
             
-            profile.CreateMap<Patient, PatientForListVm>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
-                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
-                .ForMember(d => d.LastName, opt => opt.MapFrom(s => s.LastName))
-                .ForMember(d => d.Pesel, opt => opt.MapFrom(s => s.Pesel));
+        //    profile.CreateMap<RehaPatientMVC.Domain.Model.Patient, PatientForListVm>()
+        //        .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
+        //        .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
+        //        .ForMember(d => d.LastName, opt => opt.MapFrom(s => s.LastName))
+        //        .ForMember(d => d.Pesel, opt => opt.MapFrom(s => s.Pesel));
 
-        }
+        //}
     }
 }

@@ -17,11 +17,12 @@ namespace RehaPatientMVC.Application.Services
     {
         private readonly IPatientRepository _patientRepo;
         private readonly IMapper _mapper;
+       
 
         public PatientService(IPatientRepository patientRepository, IMapper mapper)
         {
             _patientRepo= patientRepository;
-            _mapper = mapper;
+            _mapper= mapper;
         }
 
         public int AddPatient(NewPatientVm patient)
@@ -65,24 +66,8 @@ namespace RehaPatientMVC.Application.Services
         public PatientDetailsVm ViewPatientDetails(int patientId)
         {
             var patient = _patientRepo.GetPatientById(patientId);
-            var patientVm = new PatientDetailsVm();
+            var patientVm = _mapper.Map<PatientDetailsVm>(patient);
 
-            patientVm.Pesel = patient.Pesel;
-            patientVm.Name = patient.Name;
-            patientVm.LastName = patient.LastName;
-            patientVm.Id = patient.Id;
-
-            patientVm.Contacts = new List<ContactDetailsListVm>();
-            foreach (var contacts in patient.Contacts)
-            {
-                var patientContact = new ContactDetailsListVm()
-                {
-                    PhoneNumber = contacts.PhoneNumber,
-                    Email = contacts.Email,
-                };
-
-                patientVm.Contacts.Add(patientContact);
-            }
             return patientVm;
         }
 

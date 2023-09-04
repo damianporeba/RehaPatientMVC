@@ -1,4 +1,5 @@
-﻿using RehaPatientMVC.Application.Interfaces;
+﻿using AutoMapper;
+using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
 using RehaPatientMVC.Domain.Interface;
 using RehaPatientMVC.Infrastructure.Repositories;
@@ -11,7 +12,7 @@ namespace RehaPatientMVC.Web.Configuration
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IPatientService, PatientService>();
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
 

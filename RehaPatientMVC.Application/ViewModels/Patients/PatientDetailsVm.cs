@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace RehaPatientMVC.Application.ViewModels.Patients
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Pesel { get; set; }
-        public List <ContactDetailsListVm> Contacts { get; set; }
+
+        //public void Mapping (Profile profile)
+        //{
+        //    profile.CreateMap<RehaPatientMVC.Domain.Model.Patient,  PatientDetailsVm>();   
+        //}
     }
 }

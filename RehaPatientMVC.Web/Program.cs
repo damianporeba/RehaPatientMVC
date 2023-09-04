@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using RehaPatientMVC.Infrastructure;
 using RehaPatientMVC.Web.Configuration;
 using RehaPatientMVC.Application;
-
+using AutoMapper;
+using RehaPatientMVC.Domain.MappingProfile;
+using RehaPatientMVC.Application.MappingProfile;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 
 // Add services to the container.
@@ -21,13 +22,15 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//implementacja mapowania
+builder.Services.AddAutoMapper(typeof(PatientDetailsMappingProfile));
+builder.Services.AddAutoMapper(typeof(PatientToListMappingProfile));
 
 //zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
 builder.Services                 
     .AddApplication()
     .AddInterface();
-
 
 var app = builder.Build();
 

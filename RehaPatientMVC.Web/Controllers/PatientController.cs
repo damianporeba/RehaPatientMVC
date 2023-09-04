@@ -8,7 +8,7 @@ namespace RehaPatientMVC.Web.Controllers
     {
         private readonly IPatientService _patientService;
 
-        public PatientController(IPatientService patientService) //dependency injection 
+        public PatientController(IPatientService patientService) 
         {
             _patientService = patientService;
         }
@@ -16,14 +16,7 @@ namespace RehaPatientMVC.Web.Controllers
 
         public IActionResult Index() //podstawowa akcja, wyświetla listę wszystkich pacjentów
         {
-            //1. utworzyc widok dla tej akcji
-            //2. tabela z pacjentami
-            //3. panel z filtrowaniem pacjentów
-
-            //musi serwis przygotować dane
-            //serwis musi zwrócic dane w odpowiednim formacie - nie potrzebujemy obiektu pacjenta, tylko jego niektore właściwości 
             var model = _patientService.GetAllPatientsForList();
-
             return View(model);
         }
 
@@ -40,7 +33,9 @@ namespace RehaPatientMVC.Web.Controllers
         //    var id = _patientService.AddPatient(model); //w nawiasie (model)
         //    return View();
         //}
-        public IActionResult ViewPatient (int patientId)
+
+        [HttpGet]
+        public IActionResult ViewPatient (int patientId = 1) //Metoda dodana na "sztywno" do sprawdzenia. Do rozwinięcia. Do zmiany widok
         {
             var patientModel = _patientService.ViewPatientDetails(patientId);
             return View(patientModel);
