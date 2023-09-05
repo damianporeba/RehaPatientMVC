@@ -31,13 +31,16 @@ namespace RehaPatientMVC.Application.Services
             return  i = 0;
         }
 
-        public ListPatientForListVm GetAllPatientsForList()  //to samo co niżej ale z wykorzystaniem mappera
+        public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string searchString)  //to samo co niżej ale z wykorzystaniem mappera
         {
           
-            var patients = _patientRepo.GetAllPatients().ProjectTo<PatientForListVm>(_mapper.ConfigurationProvider).ToList();
-
+            var patients = _patientRepo.GetAllPatients().Where(p=>p.Name.StartsWith(searchString)).ProjectTo<PatientForListVm>(_mapper.ConfigurationProvider).ToList();
+            var patientToShow = patients.Skip(pageSize * (PageNo - 1)).Take(pageSize).ToList();
             var patientsList = new ListPatientForListVm()
             {
+                PageNo = PageNo,
+                PageSize = pageSize,
+                SearchString = searchString,
                 Patients = patients,
                 Count = patients.Count()
             };

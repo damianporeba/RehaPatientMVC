@@ -10,7 +10,7 @@ namespace RehaPatientMVC.Application.Interfaces
 {
     public interface IPatientService
     {
-        public ListPatientForListVm GetAllPatientsForList();
+        public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string SearchString);
         public int AddPatient(NewPatientVm patient);
         public PatientDetailsVm ViewPatientDetails(int customedId);
     }
