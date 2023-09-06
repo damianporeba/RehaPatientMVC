@@ -16,13 +16,22 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index() //podstawowa akcja, wyświetla listę wszystkich pacjentów
         {
-            var model = _patientService.GetAllPatientsForList();
+            var model = _patientService.GetAllPatientsForList(2, 1, "");
             return View(model);
         }
         [HttpPost]
-        public IActionResult Index(int pageSize, int PageNo, string SearchString) //podstawowa akcja, wyświetla listę wszystkich pacjentów
+        public IActionResult Index(int pageSize, int? pageNo, string searchString) //podstawowa akcja, wyświetla listę wszystkich pacjentów
         {
-            var model = _patientService.GetAllPatientsForList();
+            if (!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+
+            if(searchString is null)
+            {
+                searchString = string.Empty;
+            }
+            var model = _patientService.GetAllPatientsForList(pageSize, pageNo.Value, searchString);
             return View(model);
         }
 

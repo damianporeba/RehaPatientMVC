@@ -35,36 +35,17 @@ namespace RehaPatientMVC.Application.Services
         {
           
             var patients = _patientRepo.GetAllPatients().Where(p=>p.Name.StartsWith(searchString)).ProjectTo<PatientForListVm>(_mapper.ConfigurationProvider).ToList();
-            var patientToShow = patients.Skip(pageSize * (PageNo - 1)).Take(pageSize).ToList();
+            var patientsToShow = patients.Skip(pageSize * (PageNo - 1)).Take(pageSize).ToList();
             var patientsList = new ListPatientForListVm()
             {
                 PageNo = PageNo,
                 PageSize = pageSize,
                 SearchString = searchString,
-                Patients = patients,
+                Patients = patientsToShow,
                 Count = patients.Count()
             };
             return patientsList;
         }
-
-        //var patients = _patientRepo.GetAllPatients(); //odwołanie do metody z patientrepository która zwraca pacjentów z bazydanych
-        //ListPatientForListVm result = new ListPatientForListVm(); //tworzenie obiektu VM który bedzie zwracany z metody na samym końcu
-        //result.Patients = new List<PatientForListVM>(); //inicjalizacja listy z obiektu wyżej 
-        //foreach (var patient in patients) //pętla iterująca po wynikach listy z repo
-        //{
-        //    var patientVm = new PatientForListVM() //tworzenie w każdej pętli z listy obiektu PatientForListVM, określamy właściwości obiektu takie jak w odpowiedzi z BD
-        //    {
-        //        Id = patient.Id,
-        //        LastName = patient.LastName,
-        //        Name = patient.Name,
-        //        Pesel = patient.Pesel
-        //    };
-        //    result.Patients.Add(patientVm); //dodawanie obiektu do listy w tej metodzie
-        //}
-        //result.Count = result.Patients.Count; //przypisujemy wartość jaką jest ilość wyników na liście na właściwość count w klasie ListPatientForListVm
-        //return result; //zwrot całej listy wszystkich pacjentów
-
-
 
         public PatientDetailsVm ViewPatientDetails(int patientId)
         {
