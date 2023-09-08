@@ -27,8 +27,9 @@ namespace RehaPatientMVC.Application.Services
 
         public int AddPatient(NewPatientVm patient)
         {
-            int i = 0;
-            return  i = 0;
+            var pat = _mapper.Map<Patient>(patient);
+            var id = _patientRepo.AddPatient(pat);
+            return id;
         }
 
         public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string searchString)  //to samo co niżej ale z wykorzystaniem mappera

@@ -26,6 +26,8 @@ builder.Services.AddControllersWithViews();
 //implementacja mapowania
 builder.Services.AddAutoMapper(typeof(PatientDetailsMappingProfile));
 builder.Services.AddAutoMapper(typeof(PatientToListMappingProfile));
+builder.Services.AddAutoMapper(typeof(AddNewPatientMappingProfile));
+
 
 //zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
 builder.Services                 

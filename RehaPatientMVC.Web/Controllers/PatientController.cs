@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
+using RehaPatientMVC.Application.ViewModels.Patients;
 
 namespace RehaPatientMVC.Web.Controllers
 {
@@ -38,16 +39,16 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpGet]
         public IActionResult AddPatient()
         {
-            return View();
+            return View(new NewPatientVm());
         }
 
         [HttpPost]
-        //public IActionResult AddPatient(PatientModel model)
-        //{
+        public IActionResult AddPatient(NewPatientVm model)
+        {
 
-        //    var id = _patientService.AddPatient(model); //w nawiasie (model)
-        //    return View();
-        //}
+            var id = _patientService.AddPatient(model); 
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public IActionResult ViewPatient (int patientId) //Metoda dodana na "sztywno" do sprawdzenia. Do rozwinięcia. Do zmiany widok
