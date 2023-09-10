@@ -50,7 +50,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditPatient(int patientId = 1)
+        public IActionResult EditPatient(int patientId)
         {
             var patient = _patientService.GetPatientForEdit(patientId);
             return View(patient);
