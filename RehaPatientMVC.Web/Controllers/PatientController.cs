@@ -45,8 +45,21 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public IActionResult AddPatient(NewPatientVm model)
         {
-
             var id = _patientService.AddPatient(model); 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditPatient(int patientId = 1)
+        {
+            var patient = _patientService.GetPatientForEdit(patientId);
+            return View(patient);
+        }
+
+        [HttpPost]
+        public IActionResult EditPatient(NewPatientVm model)
+        {
+            _patientService.UpdatePatient(model);
             return RedirectToAction("Index");
         }
 

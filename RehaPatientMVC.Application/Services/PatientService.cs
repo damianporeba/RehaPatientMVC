@@ -48,11 +48,24 @@ namespace RehaPatientMVC.Application.Services
             return patientsList;
         }
 
+        public NewPatientVm GetPatientForEdit(int patientId)
+        {
+            var patient = _patientRepo.GetPatientById(patientId);
+            var patientVm = _mapper.Map<NewPatientVm>(patient);
+            return patientVm;
+        }
+
+        public void UpdatePatient(NewPatientVm model)
+        {
+            var patient = _mapper.Map<Patient>(model);
+            _patientRepo.UpdatePatient(patient);
+
+        }
+
         public PatientDetailsVm ViewPatientDetails(int patientId)
         {
             var patient = _patientRepo.GetPatientById(patientId);
             var patientVm = _mapper.Map<PatientDetailsVm>(patient);
-
             return patientVm;
         }
 

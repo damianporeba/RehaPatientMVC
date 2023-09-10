@@ -11,6 +11,5 @@ namespace RehaPatientMVC.Domain.Interface
     {
         int AddContact(ContactDetails contactDetails);
         void DeleteContact(int contactId);
-       
     }
 }

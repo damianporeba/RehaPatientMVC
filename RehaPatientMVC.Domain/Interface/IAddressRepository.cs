@@ -12,6 +12,5 @@ namespace RehaPatientMVC.Domain.Interface
         void DeleteAddress(int addressId);
         int AddAddress(Address address);
         int UpdateAddress(Address address);
-
     }
 }

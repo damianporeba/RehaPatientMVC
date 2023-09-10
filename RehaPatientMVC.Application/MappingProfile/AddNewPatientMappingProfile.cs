@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Application.MappingProfile
     {
         public AddNewPatientMappingProfile()
         {
-            CreateMap<NewPatientVm, RehaPatientMVC.Domain.Model.Patient>();
+            CreateMap<NewPatientVm, RehaPatientMVC.Domain.Model.Patient>().ReverseMap();
         }
     }
 }

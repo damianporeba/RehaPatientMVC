@@ -42,8 +42,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             }
             _context.SaveChanges();
             return addressUpdate.Id;
-
-            
         }
     }
 }

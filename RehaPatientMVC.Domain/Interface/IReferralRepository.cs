@@ -10,7 +10,6 @@ namespace RehaPatientMVC.Domain.Interface
     public interface IReferralRepository
     {
         void DeleteReferral(int referralId);
-
         int AddReferral(Referral referral);
     }
 }

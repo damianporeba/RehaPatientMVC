@@ -9,6 +9,9 @@ using RehaPatientMVC.Application;
 using AutoMapper;
 using RehaPatientMVC.Domain.MappingProfile;
 using RehaPatientMVC.Application.MappingProfile;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using RehaPatientMVC.Application.ViewModels.Patients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,13 +24,14 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(fv=>fv.DisableDataAnnotationsValidation = true); 
 
 //implementacja mapowania
 builder.Services.AddAutoMapper(typeof(PatientDetailsMappingProfile));
 builder.Services.AddAutoMapper(typeof(PatientToListMappingProfile));
 builder.Services.AddAutoMapper(typeof(AddNewPatientMappingProfile));
 
+builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 
 //zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
 builder.Services                 

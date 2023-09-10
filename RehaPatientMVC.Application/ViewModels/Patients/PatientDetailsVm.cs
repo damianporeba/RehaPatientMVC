@@ -13,10 +13,5 @@ namespace RehaPatientMVC.Application.ViewModels.Patients
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Pesel { get; set; }
-
-        //public void Mapping (Profile profile)
-        //{
-        //    profile.CreateMap<RehaPatientMVC.Domain.Model.Patient,  PatientDetailsVm>();   
-        //}
     }
 }

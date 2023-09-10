@@ -49,6 +49,15 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             var patients = _context.patients;
             return patients;
         }
+
+        public void UpdatePatient(Patient patient)
+        {
+            _context.Attach(patient);
+            _context.Entry(patient).Property("Name").IsModified = true;
+            _context.Entry(patient).Property("LastName").IsModified = true;
+            _context.Entry(patient).Property("Pesel").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 
 }
