@@ -13,6 +13,7 @@ namespace RehaPatientMVC.Domain.MappingProfile
         public PatientDetailsMappingProfile()
         {
             CreateMap<RehaPatientMVC.Domain.Model.Patient, PatientDetailsVm>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
                 .ForMember(dest => dest.Pesel, opt => opt.MapFrom(src => src.Pesel));

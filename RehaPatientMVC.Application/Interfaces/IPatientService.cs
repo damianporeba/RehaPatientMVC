@@ -12,8 +12,9 @@ namespace RehaPatientMVC.Application.Interfaces
     {
         public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string SearchString);
         public int AddPatient(NewPatientVm patient);
-        public PatientDetailsVm ViewPatientDetails(int customedId);
-        NewPatientVm GetPatientForEdit(int patientId);
+        public PatientDetailsVm ViewPatientDetails(int id);
+        NewPatientVm GetPatientForEdit(int id);
         void UpdatePatient(NewPatientVm model);
+        void DeletePatient(int id);
     }
 }

@@ -32,6 +32,11 @@ namespace RehaPatientMVC.Application.Services
             return id;
         }
 
+        public void DeletePatient(int id)
+        {
+            _patientRepo.DeletePatient(id);
+        }
+
         public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string searchString)  //to samo co niżej ale z wykorzystaniem mappera
         {
           
@@ -48,9 +53,9 @@ namespace RehaPatientMVC.Application.Services
             return patientsList;
         }
 
-        public NewPatientVm GetPatientForEdit(int patientId)
+        public NewPatientVm GetPatientForEdit(int id)
         {
-            var patient = _patientRepo.GetPatientById(patientId);
+            var patient = _patientRepo.GetPatientById(id);
             var patientVm = _mapper.Map<NewPatientVm>(patient);
             return patientVm;
         }
@@ -62,9 +67,9 @@ namespace RehaPatientMVC.Application.Services
 
         }
 
-        public PatientDetailsVm ViewPatientDetails(int patientId)
+        public PatientDetailsVm ViewPatientDetails(int id)
         {
-            var patient = _patientRepo.GetPatientById(patientId);
+            var patient = _patientRepo.GetPatientById(id);
             var patientVm = _mapper.Map<PatientDetailsVm>(patient);
             return patientVm;
         }

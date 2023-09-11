@@ -17,7 +17,7 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index() //podstawowa akcja, wyświetla listę wszystkich pacjentów
         {
-            var model = _patientService.GetAllPatientsForList(2, 1, "");
+            var model = _patientService.GetAllPatientsForList(3, 1, "");
             return View(model);
         }
         [HttpPost]
@@ -50,9 +50,9 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditPatient(int patientId)
+        public IActionResult EditPatient(int id)
         {
-            var patient = _patientService.GetPatientForEdit(patientId);
+            var patient = _patientService.GetPatientForEdit(id);
             return View(patient);
         }
 
@@ -64,10 +64,17 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewPatient (int patientId) //Metoda dodana na "sztywno" do sprawdzenia. Do rozwinięcia. Do zmiany widok
+        public IActionResult ViewPatient (int id)
         {
-            var patientModel = _patientService.ViewPatientDetails(patientId);
+            var patientModel = _patientService.ViewPatientDetails(id);
             return View(patientModel);
         }
+
+        public IActionResult Delete (int id)
+        {
+            _patientService.DeletePatient(id); 
+            return RedirectToAction("Index"); 
+        }
+
     }
 }

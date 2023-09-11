@@ -16,14 +16,14 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             _context = context;
         }
 
-        public void DeletePatient(int patientId)
+        public void DeletePatient(int id)
         {
-            var patient = _context.patients.Find(patientId);
+            var patient = _context.patients.Find(id);
             if (patient != null)
             {
                 _context.patients.Remove(patient);
                 _context.SaveChanges();
-            }
+            } 
         }
         public int AddPatient (Patient patient)
         {

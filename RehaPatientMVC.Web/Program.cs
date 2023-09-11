@@ -24,12 +24,13 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
-builder.Services.AddControllersWithViews().AddFluentValidation(fv=>fv.DisableDataAnnotationsValidation = true); 
+builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/); 
 
 //implementacja mapowania
 builder.Services.AddAutoMapper(typeof(PatientDetailsMappingProfile));
 builder.Services.AddAutoMapper(typeof(PatientToListMappingProfile));
 builder.Services.AddAutoMapper(typeof(AddNewPatientMappingProfile));
+builder.Services.AddAutoMapper(typeof(PatientVmtoPatientsMappingProfile));
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 
