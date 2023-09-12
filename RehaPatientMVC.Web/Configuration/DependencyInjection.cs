@@ -12,7 +12,7 @@ namespace RehaPatientMVC.Web.Configuration
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IPatientService, PatientService>();
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddTransient<IMedicService, MedicService>();
             return services;
         }
 
