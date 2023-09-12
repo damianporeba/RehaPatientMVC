@@ -10,9 +10,10 @@ namespace RehaPatientMVC.Domain.Interface
 {
     public interface IMedicRepository
     {
-        int AddMedic(Medic medic);
-        void RemoveMedic(int medicId);
-        int UpdateMedic (Medic medic);
-        IEnumerable<Medic> GetMedicsByDegree(string medicDegree);
+        public int AddMedic(Medic medic);
+        public void RemoveMedic(int medicId);
+        public int UpdateMedic (Medic medic);
+        public IEnumerable<Medic> GetMedicsByDegree(string medicDegree);
+        public IQueryable<Medic> GetAllMedics();
     }
 }

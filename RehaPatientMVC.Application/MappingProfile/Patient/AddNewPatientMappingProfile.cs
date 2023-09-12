@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RehaPatientMVC.Application.MappingProfile
+namespace RehaPatientMVC.Application.MappingProfile.Patient
 {
     public class AddNewPatientMappingProfile : Profile
     {
         public AddNewPatientMappingProfile()
         {
-            CreateMap<NewPatientVm, RehaPatientMVC.Domain.Model.Patient>();
+            CreateMap<NewPatientVm, Domain.Model.Patient>();
         }
     }
 }

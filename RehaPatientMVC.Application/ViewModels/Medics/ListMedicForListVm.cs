@@ -9,7 +9,7 @@ namespace RehaPatientMVC.Application.ViewModels.Medics
 {
     public class ListMedicForListVm
     {
-        public List<MedicForListVm> Patients { get; set; }
+        public List<MedicForListVm> Medics { get; set; }
         public int PageSize { get; set; }
         public int PageNo { get; set; }
         public int CurrentPage { get; set; }

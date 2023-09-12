@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
         private readonly Context _context;
         public MedicRepository(Context context)
         {
-            context = _context;
+            _context = context;
         }
 
         public int AddMedic(Medic medic)
@@ -21,6 +21,12 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             _context.medics.Add(medic);
             _context.SaveChanges();
             return medic.Id;
+        }
+
+        public IQueryable<Medic> GetAllMedics()
+        {
+            var medics = _context.medics;
+            return medics;
         }
 
         public IEnumerable<Medic> GetMedicsByDegree(string medicDegree)

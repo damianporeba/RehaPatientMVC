@@ -8,7 +8,6 @@ namespace RehaPatientMVC.Web.Controllers
     public class PatientController : Controller
     {
         private readonly IPatientService _patientService;
-
         public PatientController(IPatientService patientService) 
         {
             _patientService = patientService;

@@ -12,6 +12,8 @@ using RehaPatientMVC.Application.MappingProfile;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using RehaPatientMVC.Application.ViewModels.Patients;
+using RehaPatientMVC.Application.MappingProfile.Patient;
+using RehaPatientMVC.Application.MappingProfile.Medic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +33,12 @@ builder.Services.AddAutoMapper(typeof(PatientDetailsMappingProfile));
 builder.Services.AddAutoMapper(typeof(PatientToListMappingProfile));
 builder.Services.AddAutoMapper(typeof(AddNewPatientMappingProfile));
 builder.Services.AddAutoMapper(typeof(PatientVmtoPatientsMappingProfile));
+
+builder.Services.AddAutoMapper(typeof(AddNewMedicMappingProfile));
+builder.Services.AddAutoMapper(typeof(MedicDetailsMappingProfile));
+builder.Services.AddAutoMapper(typeof(MedicToListMappingProfile));
+builder.Services.AddAutoMapper(typeof(MedicVmToMedicMappingProfile));
+
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 
