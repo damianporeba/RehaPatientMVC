@@ -15,5 +15,6 @@ namespace RehaPatientMVC.Domain.Interface
         public int UpdateMedic (Medic medic);
         public IEnumerable<Medic> GetMedicsByDegree(string medicDegree);
         public IQueryable<Medic> GetAllMedics();
+        public Medic GetMedicById (int id);
     }
 }

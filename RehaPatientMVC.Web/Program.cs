@@ -28,24 +28,16 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/); 
 
-//implementacja mapowania
-builder.Services.AddAutoMapper(typeof(PatientDetailsMappingProfile));
-builder.Services.AddAutoMapper(typeof(PatientToListMappingProfile));
-builder.Services.AddAutoMapper(typeof(AddNewPatientMappingProfile));
-builder.Services.AddAutoMapper(typeof(PatientVmtoPatientsMappingProfile));
-
-builder.Services.AddAutoMapper(typeof(AddNewMedicMappingProfile));
-builder.Services.AddAutoMapper(typeof(MedicDetailsMappingProfile));
-builder.Services.AddAutoMapper(typeof(MedicToListMappingProfile));
-builder.Services.AddAutoMapper(typeof(MedicVmToMedicMappingProfile));
-
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 
-//zbiorcze dodawanie DependencyInjection z folderu RehaPatientMVC.Web.Configuration
-builder.Services                 
+//zbiorcze dodawanie DependencyInjection oraz profili mapowania => RehaPatientMVC.Web.Configuration
+builder.Services
     .AddApplication()
-    .AddInterface();
+    .AddInterface()
+    .AddMapping();
+
+
 
 var app = builder.Build();
 

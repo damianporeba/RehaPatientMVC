@@ -33,5 +33,14 @@ namespace RehaPatientMVC.Web.Controllers
             var model = _medicService.GetAllMedicsForList(pageSize, pageNo.Value, searchString);
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult MedicDetails(int id)
+        {
+            var model = _medicService.ViewMedicDetails(id);
+            return View(model);
+        }
+
+        
     }
 }

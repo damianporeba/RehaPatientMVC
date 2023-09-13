@@ -58,7 +58,9 @@ namespace RehaPatientMVC.Application.Services
 
         public MedicDetailsVm ViewMedicDetails(int id)
         {
-            throw new NotImplementedException();
+            var medic = _medicRepo.GetMedicById(id);
+            var medicVm = _mapper.Map<MedicDetailsVm>(medic);
+            return medicVm;
         }
     }
 }

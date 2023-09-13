@@ -24,7 +24,6 @@ namespace RehaPatientMVC.Application.Services
             _patientRepo= patientRepository;
             _mapper= mapper;
         }
-
         public int AddPatient(NewPatientVm patient)
         {
             var pat = _mapper.Map<Patient>(patient);
