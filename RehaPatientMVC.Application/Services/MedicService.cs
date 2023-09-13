@@ -32,7 +32,7 @@ namespace RehaPatientMVC.Application.Services
 
         public void DeleteMedic(int id)
         {
-            throw new NotImplementedException();
+            _medicRepo.RemoveMedic(id);
         }
 
         public ListMedicForListVm GetAllMedicsForList(int pageSize, int pageNo, string searchString)
@@ -60,7 +60,6 @@ namespace RehaPatientMVC.Application.Services
         {
             var medic = _mapper.Map<Medic>(model);
             _medicRepo.UpdateMedic(medic);
-            
         }
 
         public MedicDetailsVm ViewMedicDetails(int id)

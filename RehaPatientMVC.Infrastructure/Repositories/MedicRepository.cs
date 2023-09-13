@@ -41,9 +41,9 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             return medic;
         }
 
-        public void RemoveMedic(int medicId)
+        public void RemoveMedic(int id)
         {
-            var medicToRemove = _context.medics.FirstOrDefault(i => i.Id == medicId); 
+            var medicToRemove = _context.medics.FirstOrDefault(i => i.Id == id); 
             if (medicToRemove != null)
             {
                 _context.medics.Remove(medicToRemove);

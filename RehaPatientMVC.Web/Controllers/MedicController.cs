@@ -70,5 +70,11 @@ namespace RehaPatientMVC.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Delete (int id)
+        {
+            _medicService.DeleteMedic(id);
+            return RedirectToAction("Index");
+        }
     }
 }
