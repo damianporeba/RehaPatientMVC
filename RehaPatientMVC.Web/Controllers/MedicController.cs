@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
+using RehaPatientMVC.Application.ViewModels.Medics;
+using RehaPatientMVC.Application.ViewModels.Patients;
 
 namespace RehaPatientMVC.Web.Controllers
 {
@@ -41,6 +43,18 @@ namespace RehaPatientMVC.Web.Controllers
             return View(model);
         }
 
-        
+        [HttpGet]
+        public IActionResult AddMedic()
+        {
+            return View(new NewMedicVm());
+        }
+
+        [HttpPost]
+        public IActionResult AddMedic(NewMedicVm model)
+        {
+            var id = _medicService.AddMedic(model);
+            return RedirectToAction("Index");
+        }
+
     }
 }

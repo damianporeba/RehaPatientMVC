@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.ViewModels.Medics;
 using RehaPatientMVC.Domain.Interface;
+using RehaPatientMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,9 @@ namespace RehaPatientMVC.Application.Services
         }
         public int AddMedic(NewMedicVm medic)
         {
-            throw new NotImplementedException();
+            var med = _mapper.Map<Medic>(medic);
+            var id = _medicRepo.AddMedic(med);
+            return id;
         }
 
         public void DeleteMedic(int id)
