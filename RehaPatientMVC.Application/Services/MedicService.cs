@@ -51,12 +51,16 @@ namespace RehaPatientMVC.Application.Services
 
         public NewMedicVm GetMedicForEdit(int id)
         {
-            throw new NotImplementedException();
+            var medic = _medicRepo.GetMedicById(id);
+            var medicVm = _mapper.Map<NewMedicVm>(medic);
+            return medicVm;
         }
 
         public void UpdateMedic(NewMedicVm model)
         {
-            throw new NotImplementedException();
+            var medic = _mapper.Map<Medic>(model);
+            _medicRepo.UpdateMedic(medic);
+            
         }
 
         public MedicDetailsVm ViewMedicDetails(int id)

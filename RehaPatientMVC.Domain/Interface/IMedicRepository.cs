@@ -12,7 +12,7 @@ namespace RehaPatientMVC.Domain.Interface
     {
         public int AddMedic(Medic medic);
         public void RemoveMedic(int medicId);
-        public int UpdateMedic (Medic medic);
+        public void UpdateMedic (Medic medic);
         public IEnumerable<Medic> GetMedicsByDegree(string medicDegree);
         public IQueryable<Medic> GetAllMedics();
         public Medic GetMedicById (int id);

@@ -51,14 +51,14 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             }
         }
 
-        public int UpdateMedic(Medic medic)
+        public void UpdateMedic(Medic medic)
         {
-            var medicUpdate = _context.medics.FirstOrDefault(i=>i.Id== medic.Id);
-            if (medicUpdate != null)
-            {
-                medicUpdate = medic;
-            }
-            return medicUpdate.Id;
+            _context.Attach(medic);
+            _context.Entry(medic).Property("Name").IsModified = true;
+            _context.Entry(medic).Property("LastName").IsModified = true;
+            _context.Entry(medic).Property("Degree").IsModified = true;
+            _context.Entry(medic).Property("Profession").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }
