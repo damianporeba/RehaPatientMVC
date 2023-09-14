@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using Type = RehaPatientMVC.Domain.Model.Type;
 
 
 namespace RehaPatientMVC.Infrastructure
