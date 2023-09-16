@@ -37,6 +37,17 @@ namespace RehaPatientMVC.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult AddRefferal()
+        {
+
+        }
+
+        [HttpPost]
+        public IActionResult AddRefferal()
+        {
+
+        }
         public  IActionResult Delete (int id)
         {
             _referralService.DeleteReferral(id);
