@@ -16,7 +16,7 @@ namespace RehaPatientMVC.Domain.Model
         public int MedicId { get; set;}
         public int PatientId { get; set;}
 
-        public virtual Patient Patient { get; set; } //relacja z pacjentem 
+        public virtual Patient Patient { get; set; } 
         public virtual Medic Medic { get; set; }
     }
 }
