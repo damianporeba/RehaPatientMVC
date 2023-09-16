@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
         private readonly Context _context;
         public ReferralRepository(Context context)
         {
-            context = _context;
+            _context = context;
         }
 
         public int AddReferral(Referral referral)
@@ -31,6 +31,12 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.referrals.Remove(referralRemove);
                 _context.SaveChanges();
             }
+        }
+
+        public IQueryable<Referral> GetAllReferrals()
+        {
+            var referrals = _context.referrals;
+            return referrals;
         }
     }
 }

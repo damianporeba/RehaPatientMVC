@@ -1,0 +1,71 @@
+﻿@model RehaPatientMVC.Application.ViewModels.Referral.ListReferralForListVm
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                Pesel
+            </th>
+            <th>
+                ICD10
+            </th>
+            <th>
+                TypeReferral
+            </th>
+            <th>
+                MedicId
+            </th>
+            <th>
+                PatientId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Referrals) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pesel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ICD10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeReferral)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

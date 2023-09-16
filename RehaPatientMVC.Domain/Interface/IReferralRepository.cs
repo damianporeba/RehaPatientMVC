@@ -1,4 +1,5 @@
-﻿using RehaPatientMVC.Domain.Model;
+﻿using Microsoft.AspNetCore.SignalR;
+using RehaPatientMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace RehaPatientMVC.Domain.Interface
     {
         void DeleteReferral(int referralId);
         int AddReferral(Referral referral);
+        IQueryable<Referral> GetAllReferrals();
     }
 }

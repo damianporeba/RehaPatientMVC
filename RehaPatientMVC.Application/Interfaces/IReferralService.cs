@@ -1,16 +1,14 @@
-﻿using RehaPatientMVC.Application.ViewModels.Patients;
+﻿using RehaPatientMVC.Application.ViewModels.Referral;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RehaPatientMVC.Application.Services.ReferralService;
-
 
 namespace RehaPatientMVC.Application.Interfaces
 {
     public interface IReferralService
     {
-        public int AddReferral(NewRefferalVm referral);
+        public ListReferralForListVm GetAllReferralsForList (int pageSize, int PageNo, string SearchString);
     }
 }
