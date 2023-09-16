@@ -26,6 +26,11 @@ namespace RehaPatientMVC.Application.Services
             _mapper = mapper;
         }
 
+        public void DeleteReferral(int id)
+        {
+            _referralRepository.DeleteReferral(id);
+        }
+
         public ListReferralForListVm GetAllReferralsForList(int pageSize, int pageNo, string searchString)
         {
             var referrals = _referralRepository.GetAllReferrals().Where(p => p.Pesel.StartsWith(searchString)).ProjectTo<ReferralForListVm>(_mapper.ConfigurationProvider).ToList();

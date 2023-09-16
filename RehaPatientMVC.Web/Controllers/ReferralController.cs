@@ -36,5 +36,11 @@ namespace RehaPatientMVC.Web.Controllers
             var model = _referralService.GetAllReferralsForList(pageSize, pageNo.Value, searchString);
             return View(model);
         }
+
+        public  IActionResult Delete (int id)
+        {
+            _referralService.DeleteReferral(id);
+            return RedirectToAction("Index");
+        }
     }
 }

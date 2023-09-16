@@ -9,6 +9,7 @@ namespace RehaPatientMVC.Application.Interfaces
 {
     public interface IReferralService
     {
+        void DeleteReferral(int id);
         public ListReferralForListVm GetAllReferralsForList (int pageSize, int PageNo, string SearchString);
     }
 }
