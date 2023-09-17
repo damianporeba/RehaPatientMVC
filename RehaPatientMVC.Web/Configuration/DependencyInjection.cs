@@ -13,6 +13,7 @@ namespace RehaPatientMVC.Web.Configuration
         {
             services.AddTransient<IPatientService, PatientService>();
             services.AddTransient<IMedicService, MedicService>();
+            services.AddTransient<IReferralService, ReferralService>();
             return services;
         }
 
@@ -22,6 +23,7 @@ namespace RehaPatientMVC.Web.Configuration
             services.AddTransient<IContactDetailsRepository, ContactDetailsRepository>();
             services.AddTransient<IAddressRepository, AddressReporitory>();
             services.AddTransient<IMedicRepository, MedicRepository>();
+            services.AddTransient<IReferralRepository, ReferralRepository>();
             return services;
         }
     }

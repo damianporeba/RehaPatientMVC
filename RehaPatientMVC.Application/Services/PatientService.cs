@@ -36,7 +36,7 @@ namespace RehaPatientMVC.Application.Services
             _patientRepo.DeletePatient(id);
         }
 
-        public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string searchString)  //to samo co niżej ale z wykorzystaniem mappera
+        public ListPatientForListVm GetAllPatientsForList(int pageSize, int PageNo, string searchString)
         {
           
             var patients = _patientRepo.GetAllPatients().Where(p=>p.Name.StartsWith(searchString)).ProjectTo<PatientForListVm>(_mapper.ConfigurationProvider).ToList();

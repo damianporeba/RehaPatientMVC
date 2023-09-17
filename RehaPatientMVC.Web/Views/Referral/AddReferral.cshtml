@@ -1,0 +1,61 @@
+﻿@using RehaPatientMVC.Domain.Model;
+@model RehaPatientMVC.Application.ViewModels.Referral.NewReferralVm
+
+@{
+    ViewData["Title"] = "AddReferral";
+}
+
+<h1>AddReferral</h1>
+
+<h4>NewReferralVm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddReferral">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesel" class="control-label"></label>
+                <input asp-for="Pesel" class="form-control" />
+                <span asp-validation-for="Pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ICD10" class="control-label"></label>
+                <input asp-for="ICD10" class="form-control" />
+                <span asp-validation-for="ICD10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeReferral" class="control-label"></label>
+                <select asp-for="TypeReferral" asp-items="ViewBag.ReferralType" class="form-control"></select>
+
+@*                @Html.DropDownList("ReferralType", ViewBag.ReferralType, "Select Type", new {@class = "form-control"})
+*@            </div>
+            <div class="form-group">
+                <label asp-for="MedicId" class="control-label"></label>
+                <select asp-for="MedicId" asp-items="ViewBag.MedicsList" class="form-control"></select>
+
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="PatientId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

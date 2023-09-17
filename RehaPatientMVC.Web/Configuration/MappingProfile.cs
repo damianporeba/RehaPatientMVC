@@ -3,6 +3,7 @@ using RehaPatientMVC.Application.MappingProfile.Patient;
 using RehaPatientMVC.Application.MappingProfile;
 using RehaPatientMVC.Domain.MappingProfile;
 using AutoMapper;
+using RehaPatientMVC.Application.MappingProfile.Referral;
 
 namespace RehaPatientMVC.Web.Configuration
 {
@@ -19,6 +20,10 @@ namespace RehaPatientMVC.Web.Configuration
             services.AddAutoMapper(typeof(MedicDetailsMappingProfile));
             services.AddAutoMapper(typeof(MedicToListMappingProfile));
             services.AddAutoMapper(typeof(MedicVmToMedicMappingProfile));
+
+            services.AddAutoMapper(typeof(ReferralToListMappingProfile));
+            services.AddAutoMapper(typeof(AddNewReferralMappingProfile));
+            services.AddAutoMapper(typeof(ReferratVmToRefferalMappingProfile));
 
             return services;
         }
