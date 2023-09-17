@@ -14,6 +14,7 @@ using FluentValidation;
 using RehaPatientMVC.Application.ViewModels.Patients;
 using RehaPatientMVC.Application.MappingProfile.Patient;
 using RehaPatientMVC.Application.MappingProfile.Medic;
+using RehaPatientMVC.Application.ViewModels.Referral;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,7 @@ builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableD
 
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
+builder.Services.AddTransient<IValidator<NewReferralVm>, NewReferralValidation>();
 
 //zbiorcze dodawanie DependencyInjection oraz profili mapowania => RehaPatientMVC.Web.Configuration
 builder.Services

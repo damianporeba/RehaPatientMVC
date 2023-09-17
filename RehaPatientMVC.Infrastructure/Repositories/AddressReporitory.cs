@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
         private readonly Context _context;
         public AddressReporitory(Context context)
         {
-            context = _context;
+            _context = context;
         }
 
         public int AddAddress(Address address)
