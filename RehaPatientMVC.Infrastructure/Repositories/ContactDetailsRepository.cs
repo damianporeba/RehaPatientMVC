@@ -13,7 +13,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
         private readonly Context _context;
         public ContactDetailsRepository(Context context)
         {
-            context = _context;
+            _context = context;
         }
 
         public int AddContact(ContactDetails contactDetails)
