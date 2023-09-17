@@ -26,9 +26,27 @@ namespace RehaPatientMVC.Application.Services
             _mapper = mapper;
         }
 
+        public int AddReferral(NewReferralVm referral)
+        {
+            var newRef = _mapper.Map<Referral>(referral);
+            var id = _referralRepository.AddReferral(newRef);
+            return id;
+        }
+        public int GetPatientIdByPesel(string pesel)
+        {
+            var patientId = _referralRepository.GetPatientIdByPesel(pesel);
+            return patientId;
+        }
         public void DeleteReferral(int id)
         {
             _referralRepository.DeleteReferral(id);
+        }
+
+        public List<Medic> GetAllMedicsForList()
+        {
+            var medicList = _referralRepository.GetAllMedics();
+
+            return medicList;
         }
 
         public ListReferralForListVm GetAllReferralsForList(int pageSize, int pageNo, string searchString)

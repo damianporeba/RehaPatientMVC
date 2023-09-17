@@ -33,10 +33,26 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             }
         }
 
+        public List<Medic> GetAllMedics()
+        {
+            var medicToList = _context.medics.ToList();
+            foreach (var medic in medicToList)
+            {
+                medic.Name = medic.Name +" "+ medic.LastName+" "+medic.Profession;
+            }
+            return medicToList;
+        }
+
         public IQueryable<Referral> GetAllReferrals()
         {
             var referrals = _context.referrals;
             return referrals;
+        }
+
+        public int GetPatientIdByPesel(string pesel)
+        {
+            var patient = _context.patients.FirstOrDefault(p=>p.Pesel == pesel);
+            return patient.Id;
         }
     }
 }

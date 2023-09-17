@@ -22,6 +22,8 @@ namespace RehaPatientMVC.Web.Configuration
             services.AddAutoMapper(typeof(MedicVmToMedicMappingProfile));
 
             services.AddAutoMapper(typeof(ReferralToListMappingProfile));
+            services.AddAutoMapper(typeof(AddNewReferralMappingProfile));
+            services.AddAutoMapper(typeof(ReferratVmToRefferalMappingProfile));
 
             return services;
         }
