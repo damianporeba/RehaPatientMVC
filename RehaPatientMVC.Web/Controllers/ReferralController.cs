@@ -11,7 +11,7 @@ using System.Drawing.Printing;
 
 namespace RehaPatientMVC.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class ReferralController : Controller
     {
         private readonly IReferralService _referralService;

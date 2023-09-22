@@ -39,6 +39,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddPatient()
         {
             return View(new NewPatientVm());
@@ -52,6 +53,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult EditPatient(int id)
         {
             var patient = _patientService.GetPatientForEdit(id);
@@ -72,6 +74,7 @@ namespace RehaPatientMVC.Web.Controllers
             return View(patientModel);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete (int id)
         {
             _patientService.DeletePatient(id); 

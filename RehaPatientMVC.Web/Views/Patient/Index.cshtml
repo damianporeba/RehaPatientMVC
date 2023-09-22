@@ -5,10 +5,12 @@
 }
 
 <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <form asp-action="Index" asp-controller="Patient" method="post">   
     <div class="row">
         <input type="text" asp-for="SearchString" name="searchString" id="searchString" />
