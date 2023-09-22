@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
 using RehaPatientMVC.Application.ViewModels.Patients;
 
 namespace RehaPatientMVC.Web.Controllers
 {
+    [Authorize]
     public class PatientController : Controller
     {
+    
         private readonly IPatientService _patientService;
         public PatientController(IPatientService patientService) 
         {
