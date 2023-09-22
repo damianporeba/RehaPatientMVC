@@ -15,6 +15,7 @@ using RehaPatientMVC.Application.ViewModels.Patients;
 using RehaPatientMVC.Application.MappingProfile.Patient;
 using RehaPatientMVC.Application.MappingProfile.Medic;
 using RehaPatientMVC.Application.ViewModels.Referral;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/);
 
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+});
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = true;
@@ -40,6 +47,13 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.SignIn.RequireConfirmedEmail = false;
 
 });
+
+//builder.Services.AddAuthentication().AddGoogle(options =>
+//{
+//    IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
+//    options.ClientId = googleAuthNSection["ClientId"];
+//    options.ClientSecret = googleAuthNSection["ClientSecret"];
+//});
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 builder.Services.AddTransient<IValidator<NewReferralVm>, NewReferralValidation>();
@@ -76,6 +90,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
 
 app.Run();
 
