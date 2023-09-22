@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
 using RehaPatientMVC.Application.ViewModels.Medics;
@@ -6,6 +7,7 @@ using RehaPatientMVC.Application.ViewModels.Patients;
 
 namespace RehaPatientMVC.Web.Controllers
 {
+    [Authorize]
     public class MedicController : Controller
     {
         private readonly IMedicService _medicService;
@@ -44,6 +46,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult EditMedic (int id)
         {
             var medic = _medicService.GetMedicForEdit(id);
@@ -58,6 +61,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddMedic()
         {
             return View(new NewMedicVm());
@@ -71,6 +75,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete (int id)
         {
             _medicService.DeleteMedic(id);
