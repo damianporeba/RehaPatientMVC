@@ -27,8 +27,19 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
-builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/); 
+builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/);
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredUniqueChars = 1;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredLength = 8;
+
+    options.SignIn.RequireConfirmedEmail = false;
+
+});
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 builder.Services.AddTransient<IValidator<NewReferralVm>, NewReferralValidation>();
@@ -38,8 +49,6 @@ builder.Services
     .AddApplication()
     .AddInterface()
     .AddMapping();
-
-
 
 var app = builder.Build();
 
