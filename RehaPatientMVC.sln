@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RehaPatientMVC.Test", "RehaPatientMVC.Test\RehaPatientMVC.Test.csproj", "{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehaPatientApi", "RehaPatientApi\RehaPatientApi.csproj", "{7C5967B9-393D-459A-B6C9-21319999EAC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5967B9-393D-459A-B6C9-21319999EAC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5967B9-393D-459A-B6C9-21319999EAC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5967B9-393D-459A-B6C9-21319999EAC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5967B9-393D-459A-B6C9-21319999EAC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{EFAD0D1D-437F-4317-8D6B-7A6B51079D6E} = {C541009F-39E1-41D1-BEE1-40BC1B7F134F}
 		{095BAB02-7975-415A-9FD0-C2096D8686FF} = {AE9B82F4-FA57-414F-A3C0-2B8128DDDC68}
 		{6B9CF34A-EFC0-42F3-BB84-AE6D0437C600} = {A8B99705-432F-48D5-8557-AC6D4551D056}
+		{7C5967B9-393D-459A-B6C9-21319999EAC5} = {C2F117E5-37E3-497C-BEC0-BFFF5015FB6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {944E0141-CC67-4854-9DB4-0203E9696A39}
