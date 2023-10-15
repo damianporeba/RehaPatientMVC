@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RehaPatientMVC.Application\RehaPatientMVC.Application.csproj" />
     <ProjectReference Include="..\RehaPatientMVC.Infrastructure\RehaPatientMVC.Infrastructure.csproj" />
   </ItemGroup>
 

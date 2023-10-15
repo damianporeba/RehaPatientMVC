@@ -27,8 +27,6 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
     googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 });
 
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
-
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
