@@ -1,30 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RehaPatientMVC.Application.Interfaces;
-using RehaPatientMVC.Application.Services;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using RehaPatientMVC.Infrastructure;
 using RehaPatientMVC.Web.Configuration;
-using RehaPatientMVC.Application;
-using AutoMapper;
-using RehaPatientMVC.Domain.MappingProfile;
-using RehaPatientMVC.Application.MappingProfile;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using RehaPatientMVC.Application.ViewModels.Patients;
-using RehaPatientMVC.Application.MappingProfile.Patient;
-using RehaPatientMVC.Application.MappingProfile.Medic;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 using RehaPatientMVC.Application.ViewModels.Referral;
-using System.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
->>>>>>> Stashed changes
-=======
-using RehaPatientMVC.Application.ViewModels.Referral;
-using System.Configuration;
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,21 +21,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/);
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 });
-<<<<<<< HEAD
 
-=======
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -66,17 +39,6 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.SignIn.RequireConfirmedEmail = false;
 
 });
-
-//builder.Services.AddAuthentication().AddGoogle(options =>
-//{
-//    IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
-//    options.ClientId = googleAuthNSection["ClientId"];
-//    options.ClientSecret = googleAuthNSection["ClientSecret"];
-//});
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 
 builder.Services.AddTransient<IValidator<NewPatientVm>, NewPatientValidation>();
 builder.Services.AddTransient<IValidator<NewReferralVm>, NewReferralValidation>();

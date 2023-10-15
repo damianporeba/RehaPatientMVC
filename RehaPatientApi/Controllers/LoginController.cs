@@ -1,21 +1,18 @@
-<<<<<<< HEAD
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-=======
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
+
 
 namespace RehaPatientApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-<<<<<<< HEAD
     public class LoginController : ControllerBase
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -35,7 +32,7 @@ namespace RehaPatientApi.Controllers
             if (success)
             {
                 var tokenString = GenerateJsonWebToken(loginModel);
-                response = Ok(new {token = tokenString});
+                response = Ok(new { token = tokenString });
             }
             return response;
         }
@@ -54,9 +51,6 @@ namespace RehaPatientApi.Controllers
             var result = _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, true, lockoutOnFailure: false).Result;
             return result.Succeeded;
         }
-=======
-    public class ValuesController : ControllerBase
-    {
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
     }
 }
+
