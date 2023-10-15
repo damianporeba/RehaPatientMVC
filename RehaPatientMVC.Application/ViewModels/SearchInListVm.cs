@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.ViewModels
 {
-    internal class SearchInListVm
+    public class SearchInListVm
     {
+        public int pageSize { get; set; }
+        public int pageNumber { get; set; }
+        public string searchString { get; set; }
     }
 }
