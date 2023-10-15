@@ -17,7 +17,7 @@ namespace RehaPatientApi.Controllers
             _patientService = patientService;
         }
 
-        [HttpGet ("Index")]
+        [HttpGet("Index")]
         [AllowAnonymous]
         public ActionResult<ListPatientForListVm> Index()
         {
@@ -40,7 +40,7 @@ namespace RehaPatientApi.Controllers
             {
                 pageNumber = 1;
             }
-            
+
             if (searchString == null)
             {
                 searchString = string.Empty;
@@ -52,6 +52,24 @@ namespace RehaPatientApi.Controllers
                 return NotFound();
             }
             return Ok(model);
+        }
+
+        [HttpGet("AddPatient")]
+        public ActionResult<NewPatientVm> AddPatient()
+        {
+            var model = new NewPatientVm();
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpPost("AddPatient")]
+        public ActionResult AddPatient([FromBody] NewPatientVm newPatientVm)
+        {
+            var id = _patientService.AddPatient(newPatientVm);
+            return RedirectToAction("Index");
         }
     }
 }
