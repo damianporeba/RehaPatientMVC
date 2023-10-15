@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
-=======
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 using Microsoft.IdentityModel.Tokens;
 using RehaPatientMVC.Infrastructure;
 using System.Text;
@@ -17,31 +14,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-<<<<<<< HEAD
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Context>(options =>
-    options.UseSqlServer(connectionString));
-=======
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Services.AddDbContext<Context>(options =>
+//    options.UseSqlServer(connectionString));
+
 var app = builder.Build();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
+//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<Context>();
 
-<<<<<<< HEAD
-=======
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -54,15 +49,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Issuer"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-<<<<<<< HEAD
+
         };
     }
     );
-
-var app = builder.Build();
-
-
-
 
 
 // Configure the HTTP request pipeline.
@@ -73,25 +63,12 @@ if (app.Environment.IsDevelopment())
 }
 
 
-
-app.UseHttpsRedirection();
-
-app.UseAuthentication();
-
-app.UseAuthorization();
-
-=======
-
-        };
-    }
-    );
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.UseAuthentication();
 
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 app.MapControllers();
 
 app.Run();

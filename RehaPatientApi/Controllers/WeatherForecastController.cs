@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
-=======
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
->>>>>>> d3c402acc2632db32dd5249e6d0e142355ee7cbb
 
 namespace RehaPatientApi.Controllers
 {
