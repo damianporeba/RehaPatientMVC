@@ -71,5 +71,13 @@ namespace RehaPatientApi.Controllers
             var id = _patientService.AddPatient(newPatientVm);
             return RedirectToAction("Index");
         }
+
+        [HttpPost("PatientDetails/{id}")]
+        public ActionResult PatientDetails (int id)
+        {
+            var details = _patientService.ViewPatientDetails(id);
+            return Ok(details);
+        }
+
     }
 }

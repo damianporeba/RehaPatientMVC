@@ -80,6 +80,5 @@ namespace RehaPatientMVC.Web.Controllers
             _patientService.DeletePatient(id); 
             return RedirectToAction("Index"); 
         }
-
     }
 }
