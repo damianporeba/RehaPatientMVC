@@ -71,5 +71,37 @@ namespace RehaPatientApi.Controllers
             var id = _patientService.AddPatient(newPatientVm);
             return RedirectToAction("Index");
         }
+
+        [HttpPost("PatientDetails/{id}")]
+        public ActionResult PatientDetails (int id)
+        {
+            var details = _patientService.ViewPatientDetails(id);
+            return Ok(details);
+        }
+
+        [HttpGet("DeletePatient")]
+        public ActionResult DeletePatient(int id)
+        {
+            _patientService.DeletePatient(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("EditPatient")]
+        public ActionResult<NewPatientVm> EditPatient()
+        {
+            var model = new NewPatientVm();
+            if (model  == null) 
+            {
+            return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpPost("EditPatient")]
+        public ActionResult EditPatient([FromBody] NewPatientVm newPatientVm)
+        {
+            _patientService.UpdatePatient(newPatientVm);
+            return RedirectToAction("Index");
+        }
     }
 }
