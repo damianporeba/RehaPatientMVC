@@ -79,5 +79,11 @@ namespace RehaPatientApi.Controllers
             return Ok(details);
         }
 
+        [HttpGet("DeletePatient")]
+        public ActionResult DeletePatient(int id)
+        {
+            _patientService.DeletePatient(id);
+            return RedirectToAction("Index");
+        }
     }
 }
