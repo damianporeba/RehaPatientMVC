@@ -72,7 +72,7 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost("PatientDetails/{id}")]
+        [HttpGet("PatientDetails/{id}")]
         public ActionResult PatientDetails (int id)
         {
             var details = _patientService.ViewPatientDetails(id);
@@ -86,10 +86,10 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("EditPatient")]
-        public ActionResult<NewPatientVm> EditPatient()
+        [HttpGet("EditPatient/{id}")]
+        public ActionResult<NewPatientVm> EditPatient(int id)
         {
-            var model = new NewPatientVm();
+            var model = _patientService.GetPatientForEdit(id);
             if (model  == null) 
             {
             return NotFound();
