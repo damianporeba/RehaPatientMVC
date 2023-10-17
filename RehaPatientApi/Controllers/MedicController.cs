@@ -53,7 +53,6 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-
         [HttpGet]
         public ActionResult<NewMedicVm> AddNewMedic()
         {
@@ -70,5 +69,13 @@ namespace RehaPatientApi.Controllers
             _medicService.AddMedic(medicModel);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult DeleteMedic(int id)
+        {
+            _medicService.DeleteMedic(id);
+            return RedirectToAction("Index");
+        }
     }
+
 }
