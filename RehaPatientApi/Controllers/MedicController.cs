@@ -76,6 +76,17 @@ namespace RehaPatientApi.Controllers
             _medicService.DeleteMedic(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult<MedicDetailsVm> MedicDetails(int id)
+        {
+            var model = _medicService.ViewMedicDetails(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
     }
 
 }
