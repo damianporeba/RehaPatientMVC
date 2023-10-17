@@ -18,7 +18,7 @@ namespace RehaPatientApi.Controllers
             _medicService = medicService;
         }
 
-        [HttpGet]
+        [HttpGet("Index")]
         public ActionResult<ListMedicForListVm> Index()
         {
             var model = _medicService.GetAllMedicsForList(3, 1, "");
@@ -29,7 +29,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("Index")]
         public ActionResult Index([FromBody] SearchInListVm searchInListVm)
         {
             var pageNumber = searchInListVm.pageNumber;
@@ -53,7 +53,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpGet]
+        [HttpGet("AddNewMedic")]
         public ActionResult<NewMedicVm> AddNewMedic()
         {
             var model = new NewMedicVm();
@@ -63,21 +63,21 @@ namespace RehaPatientApi.Controllers
             }
             return Ok(model);
         }
-        [HttpPost]
+        [HttpPost("AddNewMedic")]
         public ActionResult AddNewMedic([FromBody] NewMedicVm medicModel)
         {
             _medicService.AddMedic(medicModel);
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpGet("DeleteMedic/{id}")]
         public ActionResult DeleteMedic(int id)
         {
             _medicService.DeleteMedic(id);
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpGet("MedicDetails/{id}")]
         public ActionResult<MedicDetailsVm> MedicDetails(int id)
         {
             var model = _medicService.ViewMedicDetails(id);
@@ -88,7 +88,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpGet]
+        [HttpGet("EditMedic/{id}")]
         public ActionResult<NewMedicVm> EditMedic(int id)
         {
             var model = _medicService.GetMedicForEdit(id);
@@ -99,7 +99,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
         
-        [HttpPost]
+        [HttpPost("EditMedic")]
         public ActionResult EditMedic([FromBody] NewMedicVm medicModel)
         {
             _medicService.UpdateMedic(medicModel);
