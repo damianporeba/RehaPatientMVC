@@ -87,6 +87,24 @@ namespace RehaPatientApi.Controllers
             }
             return Ok(model);
         }
+
+        [HttpGet]
+        public ActionResult<NewMedicVm> EditMedic(int id)
+        {
+            var model = _medicService.GetMedicForEdit(id);
+            if(model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+        
+        [HttpPost]
+        public ActionResult EditMedic([FromBody] NewMedicVm medicModel)
+        {
+            _medicService.UpdateMedic(medicModel);
+            return RedirectToAction("Index");
+        }
     }
 
 }
