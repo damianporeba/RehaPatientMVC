@@ -68,5 +68,12 @@ namespace RehaPatientApi.Controllers
             var id = _referralService.AddReferral(newReferralVm);
             return RedirectToAction("Index");
         }
+
+        [HttpGet("DeleteReferral{Id}")]
+        public ActionResult<NewReferralVm> DeleteReferral(int id)
+        {
+            _referralService.DeleteReferral(id); 
+            return RedirectToAction("Index");
+        }
     }
 }
