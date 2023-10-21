@@ -17,7 +17,7 @@ namespace RehaPatientApi.Controllers
             _referralService = referralService;
         }
 
-        [HttpGet]
+        [HttpGet("Index")]
         public ActionResult<ListReferralForListVm> Index() 
         {
             var model = _referralService.GetAllReferralsForList(3, 1, "");
@@ -28,7 +28,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("Index")]
         public ActionResult Index(SearchInListVm searchInList)
         {
             var searchString = searchInList.searchString;
@@ -49,6 +49,24 @@ namespace RehaPatientApi.Controllers
                 return NotFound();
             }
             return Ok(model);
+        }
+
+        [HttpGet("AddReferral")]
+        public ActionResult<NewReferralVm> AddNewReferral()
+        {
+            var model = new NewReferralVm();
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpPost("AddReferral")]
+        public ActionResult AddNewReferral([FromBody] NewReferralVm newReferralVm)
+        {
+            var id = _referralService.AddReferral(newReferralVm);
+            return RedirectToAction("Index");
         }
     }
 }
