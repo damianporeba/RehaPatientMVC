@@ -68,5 +68,11 @@ namespace RehaPatientMVC.Application.Services
             var medicVm = _mapper.Map<MedicDetailsVm>(medic);
             return medicVm;
         }
+        public List<Medic> GetAllMedicsForDropDownList()
+        {
+            var medicList = _medicRepo.GetAllMedicsForDropDownList();
+
+            return medicList;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using RehaPatientMVC.Application.ViewModels.Medics;
 using RehaPatientMVC.Application.ViewModels.Patients;
+using RehaPatientMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace RehaPatientMVC.Application.Interfaces
         NewMedicVm GetMedicForEdit(int id);
         void UpdateMedic(NewMedicVm model);
         void DeleteMedic(int id);
+        List<Medic> GetAllMedicsForDropDownList();
     }
 }

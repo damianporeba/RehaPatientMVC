@@ -66,7 +66,7 @@ namespace RehaPatientApi.Controllers
         [HttpPost("AddNewMedic")]
         public ActionResult AddNewMedic([FromBody] NewMedicVm medicModel)
         {
-            _medicService.AddMedic(medicModel);
+            var id = _medicService.AddMedic(medicModel);
             return RedirectToAction("Index");
         }
 

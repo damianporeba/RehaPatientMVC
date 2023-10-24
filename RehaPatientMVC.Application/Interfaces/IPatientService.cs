@@ -16,5 +16,6 @@ namespace RehaPatientMVC.Application.Interfaces
         NewPatientVm GetPatientForEdit(int id);
         void UpdatePatient(NewPatientVm model);
         void DeletePatient(int id);
+        int GetPatientIdByPesel(string pesel);
     }
 }

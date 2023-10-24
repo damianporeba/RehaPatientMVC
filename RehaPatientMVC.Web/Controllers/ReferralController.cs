@@ -15,10 +15,14 @@ namespace RehaPatientMVC.Web.Controllers
     public class ReferralController : Controller
     {
         private readonly IReferralService _referralService;
+        private readonly IMedicService _medicService;
+        private readonly IPatientService _patientService;
 
-        public ReferralController(IReferralService referralService)
+        public ReferralController(IReferralService referralService, IMedicService medicService, IPatientService patientService)
         {
             _referralService = referralService;
+            _medicService = medicService;
+            _patientService = patientService;
         }
 
         [HttpGet]
@@ -46,7 +50,7 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpGet]
         public IActionResult AddReferral()
         {
-            var medicList = _referralService.GetAllMedicsForList();
+            var medicList = _medicService.GetAllMedicsForDropDownList();
             ViewBag.MedicsList = new SelectList(medicList, "Id", "Name");
             var referral = new ReferralType();
             ViewBag.ReferralType = new SelectList(referral.ReferralTypes);
@@ -56,7 +60,7 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public IActionResult AddReferral(NewReferralVm model)
         {
-            var patientId = _referralService.GetPatientIdByPesel(model.Pesel);
+            var patientId = _patientService.GetPatientIdByPesel(model.Pesel);
             model.PatientId = patientId;
             var id = _referralService.AddReferral(model);
             

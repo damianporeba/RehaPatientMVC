@@ -13,7 +13,5 @@ namespace RehaPatientMVC.Domain.Interface
         void DeleteReferral(int referralId);
         int AddReferral(Referral referral);
         IQueryable<Referral> GetAllReferrals();
-        int GetPatientIdByPesel (string pesel);
-        List<Medic> GetAllMedics();
     }
 }

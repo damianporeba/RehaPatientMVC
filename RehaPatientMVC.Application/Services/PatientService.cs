@@ -72,7 +72,11 @@ namespace RehaPatientMVC.Application.Services
             var patientVm = _mapper.Map<PatientDetailsVm>(patient);
             return patientVm;
         }
+        public int GetPatientIdByPesel(string pesel)
+        {
+            var patientId = _patientRepo.GetPatientIdByPesel(pesel);
+            return patientId;
+        }
 
-       
     }
 }
