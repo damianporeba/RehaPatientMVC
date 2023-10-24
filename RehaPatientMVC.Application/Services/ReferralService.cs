@@ -42,13 +42,6 @@ namespace RehaPatientMVC.Application.Services
             _referralRepository.DeleteReferral(id);
         }
 
-        public List<Medic> GetAllMedicsForList()
-        {
-            var medicList = _referralRepository.GetAllMedics();
-
-            return medicList;
-        }
-
         public ListReferralForListVm GetAllReferralsForList(int pageSize, int pageNo, string searchString)
         {
             var referrals = _referralRepository.GetAllReferrals().Where(p => p.Pesel.StartsWith(searchString)).ProjectTo<ReferralForListVm>(_mapper.ConfigurationProvider).ToList();

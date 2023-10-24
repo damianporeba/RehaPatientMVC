@@ -14,6 +14,5 @@ namespace RehaPatientMVC.Domain.Interface
         int AddReferral(Referral referral);
         IQueryable<Referral> GetAllReferrals();
         int GetPatientIdByPesel (string pesel);
-        List<Medic> GetAllMedics();
     }
 }

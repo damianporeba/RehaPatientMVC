@@ -13,7 +13,6 @@ namespace RehaPatientMVC.Application.Interfaces
         void DeleteReferral(int id);
         ListReferralForListVm GetAllReferralsForList (int pageSize, int PageNo, string SearchString);
         int AddReferral (NewReferralVm refferal);
-        List<Medic> GetAllMedicsForList();
         int GetPatientIdByPesel(string pesel);
     }
 }

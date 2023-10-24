@@ -16,5 +16,6 @@ namespace RehaPatientMVC.Domain.Interface
         public IEnumerable<Medic> GetMedicsByDegree(string medicDegree);
         public IQueryable<Medic> GetAllMedics();
         public Medic GetMedicById (int id);
+        List<Medic> GetAllMedicsForDropDownList();
     }
 }

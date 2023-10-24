@@ -33,15 +33,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             }
         }
 
-        public List<Medic> GetAllMedics()
-        {
-            var medicToList = _context.medics.ToList();
-            foreach (var medic in medicToList)
-            {
-                medic.Name = medic.Name +" "+ medic.LastName+" "+medic.Profession;
-            }
-            return medicToList;
-        }
+        
 
         public IQueryable<Referral> GetAllReferrals()
         {

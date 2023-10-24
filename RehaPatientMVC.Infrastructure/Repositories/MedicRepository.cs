@@ -60,5 +60,14 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             _context.Entry(medic).Property("Profession").IsModified = true;
             _context.SaveChanges();
         }
+        public List<Medic> GetAllMedicsForDropDownList()
+        {
+            var medicToList = _context.medics.ToList();
+            foreach (var medic in medicToList)
+            {
+                medic.Name = medic.Name + "" + medic.LastName + "" + medic.Profession;
+            }
+            return medicToList;
+        }
     }
 }
