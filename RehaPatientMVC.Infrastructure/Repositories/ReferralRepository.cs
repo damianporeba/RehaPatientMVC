@@ -33,18 +33,10 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             }
         }
 
-        
-
         public IQueryable<Referral> GetAllReferrals()
         {
             var referrals = _context.referrals;
             return referrals;
-        }
-
-        public int GetPatientIdByPesel(string pesel)
-        {
-            var patient = _context.patients.FirstOrDefault(p=>p.Pesel == pesel);
-            return patient.Id;
         }
     }
 }

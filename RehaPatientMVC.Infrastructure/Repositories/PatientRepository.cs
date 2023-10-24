@@ -58,6 +58,11 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             _context.Entry(patient).Property("Pesel").IsModified = true;
             _context.SaveChanges();
         }
+        public int GetPatientIdByPesel(string pesel)
+        {
+            var patient = _context.patients.FirstOrDefault(p => p.Pesel == pesel);
+            return patient.Id;
+        }
     }
 
 }
