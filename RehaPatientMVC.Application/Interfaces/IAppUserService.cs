@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.Interfaces
 {
-    public interface IAdminService
+    public interface IAppUserService
     {
        
     }

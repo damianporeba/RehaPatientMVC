@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.Services
 {
-    internal class AdminServices
+    public class AppUserService
     {
     }
 }

@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RehaPatientMVC.Domain.Model;
 
 namespace RehaPatientMVC.Web.Controllers
 {
-    public class AdminController : Controller
+    public class AppUserController : Controller
     {
 
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AdminController(RoleManager<IdentityRole> roleManager)
+        public AppUserController(UserManager<AppUser> userManager)
         {
-            _roleManager = roleManager;
+           _userManager = userManager;
         }
         public IActionResult Index()
         {

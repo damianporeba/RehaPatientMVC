@@ -20,9 +20,8 @@ namespace RehaPatientMVC.Infrastructure
         public DbSet<Referral> referrals { get; set; }
 
 
-        public Context(DbContextOptions options) : base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

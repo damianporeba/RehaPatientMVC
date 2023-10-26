@@ -7,6 +7,7 @@ using FluentValidation;
 using RehaPatientMVC.Application.ViewModels.Patients;
 using RehaPatientMVC.Application.ViewModels.Referral;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RehaPatientMVC.Domain.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,12 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<Context>();
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+//    .AddEntityFrameworkStores<Context>();
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+
 builder.Services.AddControllersWithViews().AddFluentValidation(/*fv=>fv.DisableDataAnnotationsValidation = true*/);
+builder.Services.AddRazorPages();
 
 builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
