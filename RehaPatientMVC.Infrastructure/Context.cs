@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Infrastructure
 {
-    public class Context :IdentityDbContext
+    public class Context :IdentityDbContext<AppUser>
     {
         public DbSet<Address> addresses { get; set; }
         public DbSet<ContactDetails> contactDetails { get; set; }

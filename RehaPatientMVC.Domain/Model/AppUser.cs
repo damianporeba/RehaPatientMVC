@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RehaPatientMVC.Application.Interfaces
+namespace RehaPatientMVC.Domain.Model
 {
-    public interface IAdminService
+    internal class AppUser
     {
-       
     }
 }

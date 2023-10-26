@@ -14,7 +14,7 @@ namespace RehaPatientMVC.Web.Controllers
         }
         public IActionResult Index()
         {
-            return View(_roleManager.Roles);
+            return View();
         }
     }
 }
