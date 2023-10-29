@@ -12,26 +12,11 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.Services
 {
-    public class AdminService : IAdminService
+    public class AppUserService : IAppUserService
     {
-        private readonly UserManager<IdentityUser> _userManager;
-
-        private readonly Context _context;
-
-        public AdminService(UserManager<IdentityUser> userManager)
+        public void AddAppUser(NewAppUserVm appUser)
         {
-            _userManager = userManager;
-        }
-
-        public IQueryable GetAllAppUsers()
-        {
-            var users = _userManager.Users;
-            return users;
-        } 
-
-        public async void AddAppUser(User user)
-        {
-           
+            throw new NotImplementedException();
         }
 
         public void DeleteAppUser(int id)
@@ -39,12 +24,22 @@ namespace RehaPatientMVC.Application.Services
             throw new NotImplementedException();
         }
 
-        public NewUserAppVm GetAppUserForEdit(int id)
+        public IQueryable<AppUser> GetAllAppUserForList()
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateAppUser(NewUserAppVm model)
+        public NewAppUserVm GetAppUserForEdit(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAppUser(NewAppUserVm appUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public NewAppUserVm ViewAppUserDetails(int id)
         {
             throw new NotImplementedException();
         }

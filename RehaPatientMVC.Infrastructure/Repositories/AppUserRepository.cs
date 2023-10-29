@@ -10,4 +10,8 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Infrastructure.Repositories
 {
+    public class AppUserRepository
+    {
+
+    }
 }

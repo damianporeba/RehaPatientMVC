@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.ViewModels.UserApp
 {
-    public class NewUserAppVm
+    public class NewAppUserVm
     {
         public string Name { get; set; }
         public string Email { get; set; }

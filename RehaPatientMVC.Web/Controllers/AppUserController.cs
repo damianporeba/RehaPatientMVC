@@ -7,7 +7,7 @@ using RehaPatientMVC.Domain.Model;
 
 namespace RehaPatientMVC.Web.Controllers
 {
-    public class AdminController : Controller
+    public class AppUserController : Controller
     {
 
        
