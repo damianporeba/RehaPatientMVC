@@ -44,12 +44,17 @@ namespace RehaPatientMVC.Infrastructure.Repositories
 
         public AppUser GetAppUserById(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.appUsers.FirstOrDefault(x=>x.Id==id);
+            return user;
         }
 
         public void UpdateAppUser(AppUser appUser)
         {
-            throw new NotImplementedException();
+            _context.Attach(appUser);
+            _context.Entry(appUser).Property("UserFirstName").IsModified=true;
+            _context.Entry(appUser).Property("UserLastName").IsModified = true;
+            _context.Entry(appUser).Property("City").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }
