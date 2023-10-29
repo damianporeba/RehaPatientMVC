@@ -56,7 +56,9 @@ namespace RehaPatientMVC.Application.Services
 
         public NewAppUserVm ViewAppUserDetails(int id)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.GetAppUserById(id);
+            var userMap = _mapper.Map<NewAppUserVm>(user);
+            return userMap;
         }
     }
 }
