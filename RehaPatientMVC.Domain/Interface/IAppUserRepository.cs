@@ -7,12 +7,4 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Domain.Interface
 {
-    public interface IAppUserRepository
-    {
-        IQueryable<AppUser> GetAllUsers();
-        void AddNewUser (AppUser user);
-        void DeleteUser (int id);
-        AppUser GetUserById (int id);
-        void EditUser (AppUser user);
-    }
 }

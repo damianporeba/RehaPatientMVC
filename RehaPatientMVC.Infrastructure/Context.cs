@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Infrastructure
 {
-    public class Context :IdentityDbContext<AppUser>
+    public class Context :IdentityDbContext
     {
         public DbSet<Address> addresses { get; set; }
         public DbSet<ContactDetails> contactDetails { get; set; }
         public DbSet<Patient> patients { get; set; }
         public DbSet<Medic> medics { get; set; }
         public DbSet<Referral> referrals { get; set; }
+        public DbSet<AppUser> appUsers { get; set; }
 
 
         public Context(DbContextOptions<Context> options) : base(options)

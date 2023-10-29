@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RehaPatientMVC.Domain\RehaPatientMVC.Domain.csproj" />
+    <ProjectReference Include="..\RehaPatientMVC.Infrastructure\RehaPatientMVC.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
