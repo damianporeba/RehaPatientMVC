@@ -18,11 +18,11 @@ namespace RehaPatientMVC.Infrastructure
         public DbSet<Patient> patients { get; set; }
         public DbSet<Medic> medics { get; set; }
         public DbSet<Referral> referrals { get; set; }
+        public DbSet<AppUser> appUsers { get; set; }
 
 
-        public Context(DbContextOptions options) : base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

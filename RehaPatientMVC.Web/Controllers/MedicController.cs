@@ -7,7 +7,7 @@ using RehaPatientMVC.Application.ViewModels.Patients;
 
 namespace RehaPatientMVC.Web.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class MedicController : Controller
     {
         private readonly IMedicService _medicService;

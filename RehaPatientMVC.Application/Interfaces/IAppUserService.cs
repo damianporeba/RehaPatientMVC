@@ -1,0 +1,21 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using RehaPatientMVC.Application.ViewModels.UserApp;
+using RehaPatientMVC.Domain.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RehaPatientMVC.Application.Interfaces
+{
+    public interface IAppUserService
+    {
+        IQueryable<AppUser> GetAllAppUserForList();
+        void AddAppUser (NewAppUserVm appUser);
+        NewAppUserVm ViewAppUserDetails (int id);
+        NewAppUserVm GetAppUserForEdit (int id);
+        void DeleteAppUser (int id);
+        void UpdateAppUser (NewAppUserVm appUser);
+    }
+}

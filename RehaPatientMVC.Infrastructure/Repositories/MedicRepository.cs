@@ -50,7 +50,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
-
         public void UpdateMedic(Medic medic)
         {
             _context.Attach(medic);
@@ -65,7 +64,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             var medicToList = _context.medics.ToList();
             foreach (var medic in medicToList)
             {
-                medic.Name = medic.Name + "" + medic.LastName + "" + medic.Profession;
+                medic.Name = medic.Name + " " + medic.LastName + " " + medic.Profession;
             }
             return medicToList;
         }

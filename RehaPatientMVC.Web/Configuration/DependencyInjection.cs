@@ -14,6 +14,7 @@ namespace RehaPatientMVC.Web.Configuration
             services.AddTransient<IPatientService, PatientService>();
             services.AddTransient<IMedicService, MedicService>();
             services.AddTransient<IReferralService, ReferralService>();
+            services.AddTransient<IAppUserService, AppUserService>();
             return services;
         }
 
