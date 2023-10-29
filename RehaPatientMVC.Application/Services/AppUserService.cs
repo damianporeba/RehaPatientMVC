@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.ViewModels.UserApp;
+using RehaPatientMVC.Domain.Interface;
 using RehaPatientMVC.Domain.Model;
 using RehaPatientMVC.Infrastructure;
 using System;
@@ -14,24 +16,37 @@ namespace RehaPatientMVC.Application.Services
 {
     public class AppUserService : IAppUserService
     {
+        private readonly IAppUserRepository _userRepository;
+        private readonly IMapper _mapper;
+
+        public AppUserService(IAppUserRepository appUserRepository, IMapper mapper)
+        {
+            _userRepository = appUserRepository;
+            _mapper = mapper;
+        }
+
         public void AddAppUser(NewAppUserVm appUser)
         {
-            throw new NotImplementedException();
+            var patient = _mapper.Map<AppUser>(appUser);
+            _userRepository.AddNewAppUser(patient);
         }
 
         public void DeleteAppUser(int id)
         {
-            throw new NotImplementedException();
+            _userRepository.DeleteAppUser(id);
         }
 
         public IQueryable<AppUser> GetAllAppUserForList()
         {
-            throw new NotImplementedException();
+            var users = _userRepository.GetAllAppUser();
+            return users;
         }
 
         public NewAppUserVm GetAppUserForEdit(int id)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.GetAppUserById(id);
+            var userToEdit = _mapper.Map<NewAppUserVm>(user);
+            return userToEdit;
         }
 
         public void UpdateAppUser(NewAppUserVm appUser)
