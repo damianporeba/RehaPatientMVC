@@ -50,7 +50,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
-
         public void UpdateMedic(Medic medic)
         {
             _context.Attach(medic);
