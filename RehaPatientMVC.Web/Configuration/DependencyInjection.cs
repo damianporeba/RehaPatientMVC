@@ -25,6 +25,7 @@ namespace RehaPatientMVC.Web.Configuration
             services.AddTransient<IAddressRepository, AddressReporitory>();
             services.AddTransient<IMedicRepository, MedicRepository>();
             services.AddTransient<IReferralRepository, ReferralRepository>();
+            services.AddTransient<IAppUserRepository, AppUserRepository>();
             return services;
         }
     }
