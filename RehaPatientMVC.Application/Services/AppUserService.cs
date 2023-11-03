@@ -51,7 +51,8 @@ namespace RehaPatientMVC.Application.Services
 
         public void UpdateAppUser(NewAppUserVm appUser)
         {
-            throw new NotImplementedException();
+            var userToEdit = _mapper.Map<AppUser>(appUser);
+            _userRepository.UpdateAppUser(userToEdit);
         }
 
         public NewAppUserVm ViewAppUserDetails(int id)
