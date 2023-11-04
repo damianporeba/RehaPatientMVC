@@ -67,6 +67,13 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult AppUserDetails(int id)
+        {
+            var user = _userService.ViewAppUserDetails(id);
+            return View(user);
+        }
+
+        [HttpGet]
         public IActionResult Delete (int id)
         {
             _userService.DeleteAppUser(id);
