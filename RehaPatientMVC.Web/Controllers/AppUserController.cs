@@ -19,13 +19,13 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Index()
+        public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
-
+            return RedirectToAction("Index");
         }
 
         [HttpGet]

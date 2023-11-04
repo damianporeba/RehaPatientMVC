@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RehaPatientMVC.Application.ViewModels.UserApp;
 using RehaPatientMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace RehaPatientMVC.Application.MappingProfile.AppUser
     {
         public NewAppUserMappingProfile()
         {
-            CreateMap<User, NewAppUserMappingProfile>();
+            CreateMap<Domain.Model.AppUser, NewAppUserVm>();
         }
     }
 }

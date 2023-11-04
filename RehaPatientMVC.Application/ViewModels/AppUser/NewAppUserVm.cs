@@ -8,8 +8,9 @@ namespace RehaPatientMVC.Application.ViewModels.UserApp
 {
     public class NewAppUserVm
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public int Id { get; set; }
+        public string UserFirstName { get; set; }
+        public string UserLastName { get; set; }
+        public string City { get; set; }
     }
 }
