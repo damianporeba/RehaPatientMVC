@@ -30,6 +30,7 @@ namespace RehaPatientMVC.Web.Controllers
             {
                 pageNo = 1;
             }
+
             if(searchString is null)
             {
                 searchString = string.Empty;
