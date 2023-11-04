@@ -19,13 +19,23 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var list = _userService.GetAllAppUserForList(3, 1,"");
+            return View(list);
         }
 
         [HttpPost]
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
-            return RedirectToAction("Index");
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if(searchString is null)
+            {
+                searchString = string.Empty;
+            }
+            var model = _userService.GetAllAppUserForList(pageSize, pageNo.Value, searchString);
+            return View(model);
         }
 
         [HttpGet]
@@ -50,7 +60,7 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public IActionResult EditAppUser(NewAppUserVm newAppUserVm)
         {
-            //var userToEdit = _userService.GetAppUserForEdit(newAppUserVm.Id);
+            var userToEdit = _userService.GetAppUserForEdit(newAppUserVm.Id);
             return RedirectToAction("Index");
         }
 
