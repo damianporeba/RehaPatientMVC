@@ -25,7 +25,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
-
         public void DeleteAppUser(int id)
         {
             var userToRemove = _context.appUsers.FirstOrDefault(x => x.Id == id);

@@ -53,20 +53,21 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditAppUser()
+        public IActionResult EditAppUser(int id)
         {
-            return View(new NewAppUserVm());
+            var model = _userService.GetAppUserForEdit(id);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditAppUser(NewAppUserVm newAppUserVm)
+        public IActionResult EditAppUser(NewAppUserVm model)
         {
-            var userToEdit = _userService.GetAppUserForEdit(newAppUserVm.Id);
+            _userService.UpdateAppUser(model);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult DeleteAppUser(int id)
+        public IActionResult Delete (int id)
         {
             _userService.DeleteAppUser(id);
             return RedirectToAction("Index");
