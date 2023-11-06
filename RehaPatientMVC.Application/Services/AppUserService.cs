@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
+using RehaPatientMVC.Application.ViewModels.AppUser;
+using RehaPatientMVC.Application.ViewModels.Medics;
 using RehaPatientMVC.Application.ViewModels.UserApp;
 using RehaPatientMVC.Domain.Interface;
 using RehaPatientMVC.Domain.Model;
@@ -36,10 +39,18 @@ namespace RehaPatientMVC.Application.Services
             _userRepository.DeleteAppUser(id);
         }
 
-        public IQueryable<AppUser> GetAllAppUserForList()
+        public ListAppUserForListVm GetAllAppUserForList(int pageSize, int pageNo, string searchString)
         {
-            var users = _userRepository.GetAllAppUser();
-            return users;
+            var appUsers = _userRepository.GetAllAppUser().Where(p => p.UserFirstName.StartsWith(searchString)).ProjectTo<NewAppUserVm>(_mapper.ConfigurationProvider).ToList();
+            var appUserToShow = appUsers.Skip(pageSize * (pageNo-1)).Take(pageSize).ToList();
+            var userList = new ListAppUserForListVm
+            {
+                PageNo = pageNo,
+                PageSize = pageSize,
+                AppUsers = appUserToShow,
+                Count = appUserToShow.Count()
+            };
+            return userList;
         }
 
         public NewAppUserVm GetAppUserForEdit(int id)
@@ -51,7 +62,8 @@ namespace RehaPatientMVC.Application.Services
 
         public void UpdateAppUser(NewAppUserVm appUser)
         {
-            throw new NotImplementedException();
+            var userToEdit = _mapper.Map<AppUser>(appUser);
+            _userRepository.UpdateAppUser(userToEdit);
         }
 
         public NewAppUserVm ViewAppUserDetails(int id)

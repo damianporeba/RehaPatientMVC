@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace RehaPatientMVC.Application.MappingProfile.AppUser
 {
-    public class NewAppUserMappingProfile : Profile
+    public class AppUserVmToAppUserMappingProfile : Profile
     {
-        public NewAppUserMappingProfile()
+        public AppUserVmToAppUserMappingProfile()
         {
-            CreateMap<Domain.Model.AppUser, NewAppUserVm>();
+            CreateMap<NewAppUserVm, Domain.Model.AppUser>();
         }
     }
 }

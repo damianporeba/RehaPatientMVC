@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RehaPatientMVC.Application.ViewModels.AppUser;
 using RehaPatientMVC.Application.ViewModels.UserApp;
 using RehaPatientMVC.Domain.Model;
 using System;
@@ -11,7 +12,7 @@ namespace RehaPatientMVC.Application.Interfaces
 {
     public interface IAppUserService
     {
-        IQueryable<AppUser> GetAllAppUserForList();
+        ListAppUserForListVm GetAllAppUserForList(int pageSize, int PageNo, string SearchString);
         void AddAppUser (NewAppUserVm appUser);
         NewAppUserVm ViewAppUserDetails (int id);
         NewAppUserVm GetAppUserForEdit (int id);

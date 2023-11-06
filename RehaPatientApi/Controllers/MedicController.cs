@@ -70,7 +70,7 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("DeleteMedic/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult DeleteMedic(int id)
         {
             _medicService.DeleteMedic(id);
@@ -88,7 +88,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpGet("EditMedic/{id}")]
+        [HttpPut("{id}")]
         public ActionResult<NewMedicVm> EditMedic(int id)
         {
             var model = _medicService.GetMedicForEdit(id);
