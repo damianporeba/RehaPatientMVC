@@ -1,0 +1,41 @@
+﻿@model RehaPatientMVC.Application.ViewModels.AdminPanel.RoleForUserVm
+
+@{
+    ViewData["Title"] = "SetRoleForUser";
+}
+
+<h1>SetRoleForUser</h1>
+
+<h4>RoleForUserVm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SetRoleForUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <select asp-for="Email" asp-items="ViewBag.Users" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <select asp-for="Role" asp-items="ViewBag.Roles" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

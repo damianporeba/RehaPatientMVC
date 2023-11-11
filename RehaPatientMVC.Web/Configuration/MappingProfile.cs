@@ -32,6 +32,7 @@ namespace RehaPatientMVC.Web.Configuration
 
             services.AddAutoMapper(typeof(RoleVmMappingProfile));
             services.AddAutoMapper(typeof(UsersForListVmMappingProfile));
+            services.AddAutoMapper(typeof(RoleForUserVmMappingProfile));
 
             return services;
         }

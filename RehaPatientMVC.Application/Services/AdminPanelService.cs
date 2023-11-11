@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,21 +51,48 @@ namespace RehaPatientMVC.Application.Services
             //todo - zrobić mapowanie
 
             return user;
-
         }
 
-        public async Task<IdentityResult> SetRoleForUser(string id, string role)
+        public IQueryable<string> GetRolesForUser(string email)
+        {
+            var user = _userManager.FindByEmailAsync(email).Result;
+            var roles = _userManager.GetRolesAsync(user).Result.AsQueryable();
+
+            return roles;
+        }
+
+        public async Task<IdentityResult> SetRoleForUser(string email, string role)
         {
             IdentityResult result;
-            var user = await _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByEmailAsync(email);
             
             if (user == null)
             {
                 return IdentityResult.Failed();
             }
-            
+
+            var userRoles = GetRolesForUser(email);
+
+            if (userRoles != null)
+            {
+                await _userManager.RemoveFromRolesAsync(user, userRoles);
+            }
+
             result = await _userManager.AddToRoleAsync(user, role);
             return result;
+        }
+
+        public List<IdentityUser> GetAllUsersForList()
+        {
+            var users = _userManager.Users.ToList();
+            return users;
+        }
+
+        public async Task<IdentityResult> DeleteUser(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            return await _userManager.DeleteAsync(user);
         }
     }
 

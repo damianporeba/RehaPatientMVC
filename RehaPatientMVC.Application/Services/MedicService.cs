@@ -71,7 +71,6 @@ namespace RehaPatientMVC.Application.Services
         public List<Medic> GetAllMedicsForDropDownList()
         {
             var medicList = _medicRepo.GetAllMedicsForDropDownList();
-
             return medicList;
         }
     }
