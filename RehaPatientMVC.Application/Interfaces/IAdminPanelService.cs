@@ -13,8 +13,9 @@ namespace RehaPatientMVC.Application.Interfaces
     {
         public ListUsersForListVm GetAllUsers();
         IQueryable<RoleVm> GetAllRoles();
-        public Task<IdentityResult> SetRoleForUser(string id, string role);
+        public Task<IdentityResult> SetRoleForUser(string email, string role);
         public Task<IdentityUser> GetUserDetails(string id);
-
+        List<IdentityUser> GetAllUsersForList();
+        IQueryable<string> GetRolesForUser(string email);
     }
 }
