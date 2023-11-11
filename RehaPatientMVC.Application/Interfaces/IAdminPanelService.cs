@@ -17,5 +17,6 @@ namespace RehaPatientMVC.Application.Interfaces
         public Task<IdentityUser> GetUserDetails(string id);
         List<IdentityUser> GetAllUsersForList();
         IQueryable<string> GetRolesForUser(string email);
+        public Task<IdentityResult> DeleteUser(string email);
     }
 }

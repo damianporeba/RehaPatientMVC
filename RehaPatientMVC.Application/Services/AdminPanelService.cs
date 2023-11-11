@@ -88,6 +88,12 @@ namespace RehaPatientMVC.Application.Services
             return users;
         }
 
+        public async Task<IdentityResult> DeleteUser(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            return await _userManager.DeleteAsync(user);
+        }
     }
 
 }
