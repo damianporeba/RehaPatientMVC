@@ -43,7 +43,7 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> SetRoleForUser(RoleForUserVm model)
         {
-            var userRoles = _adminPanelService.GetRolesForUser(model.Email);
+            //var userRoles = _adminPanelService.GetRolesForUser(model.Email);
             await _adminPanelService.SetRoleForUser(model.Email, model.Role);
             return RedirectToAction("Index");
         }
