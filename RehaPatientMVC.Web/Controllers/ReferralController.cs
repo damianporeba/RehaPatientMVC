@@ -11,7 +11,7 @@ using System.Drawing.Printing;
 
 namespace RehaPatientMVC.Web.Controllers
 {
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class ReferralController : Controller
     {
         private readonly IReferralService _referralService;
@@ -32,6 +32,7 @@ namespace RehaPatientMVC.Web.Controllers
             return View(model);
         }
         [HttpPost]
+
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
             if (!pageNo.HasValue)
@@ -66,6 +67,8 @@ namespace RehaPatientMVC.Web.Controllers
             
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
         public  IActionResult Delete (int id)
         {
             _referralService.DeleteReferral(id);

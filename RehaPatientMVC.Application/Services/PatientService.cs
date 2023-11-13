@@ -63,7 +63,6 @@ namespace RehaPatientMVC.Application.Services
         {
             var patient = _mapper.Map<Patient>(model);
             _patientRepo.UpdatePatient(patient);
-
         }
 
         public PatientDetailsVm ViewPatientDetails(int id)

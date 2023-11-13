@@ -44,20 +44,17 @@ namespace RehaPatientMVC.Application.Services
             return roleVm;
         }
 
-        public Task <IdentityUser> GetUserDetails(string id)
+        public async Task <UserDetailsVm> GetUserDetails(string email)
         {
-            var user = _userManager.FindByIdAsync(id);
-
-            //todo - zrobić mapowanie
-
-            return user;
+            var user = await _userManager.FindByEmailAsync(email);
+            var userVm = _mapper.Map<UserDetailsVm>(user);
+            return userVm;
         }
 
         public IQueryable<string> GetRolesForUser(string email)
         {
             var user = _userManager.FindByEmailAsync(email).Result;
             var roles = _userManager.GetRolesAsync(user).Result.AsQueryable();
-
             return roles;
         }
 
@@ -91,9 +88,7 @@ namespace RehaPatientMVC.Application.Services
         public async Task<IdentityResult> DeleteUser(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
-
             return await _userManager.DeleteAsync(user);
         }
     }
-
 }

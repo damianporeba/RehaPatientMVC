@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.ViewModels.AdminPanel;
 using RehaPatientMVC.Domain.Model;
+using RehaPatientMVC.Web.Configuration;
 
 namespace RehaPatientMVC.Web.Controllers
 {
+    [Authorize("Admin")]
     public class AdminPanelController : Controller
     {
         private readonly IAdminPanelService _adminPanelService;
@@ -43,7 +46,6 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> SetRoleForUser(RoleForUserVm model)
         {
-            var userRoles = _adminPanelService.GetRolesForUser(model.Email);
             await _adminPanelService.SetRoleForUser(model.Email, model.Role);
             return RedirectToAction("Index");
         }
@@ -53,6 +55,13 @@ namespace RehaPatientMVC.Web.Controllers
         {
             await _adminPanelService.DeleteUser(email);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Details (string email)
+        {
+            var userDetails = await _adminPanelService.GetUserDetails(email);
+            return View(userDetails);
         }
     }
 }

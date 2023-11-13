@@ -22,6 +22,7 @@ namespace RehaPatientMVC.Web.Controllers
             var model = _patientService.GetAllPatientsForList(3, 1, "");
             return View(model);
         }
+
         [HttpPost]
         public IActionResult Index(int pageSize, int? pageNo, string searchString) //podstawowa akcja, wyświetla listę wszystkich pacjentów
         {
