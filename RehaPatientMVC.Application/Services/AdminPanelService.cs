@@ -47,9 +47,7 @@ namespace RehaPatientMVC.Application.Services
         public async Task <UserDetailsVm> GetUserDetails(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
-
             var userVm = _mapper.Map<UserDetailsVm>(user);
-
             return userVm;
         }
 
@@ -94,5 +92,4 @@ namespace RehaPatientMVC.Application.Services
             return await _userManager.DeleteAsync(user);
         }
     }
-
 }

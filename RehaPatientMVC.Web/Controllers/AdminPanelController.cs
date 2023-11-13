@@ -55,10 +55,10 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details (string email)
+        public async Task<ActionResult> Details (string email)
         {
-            var userDetails = _adminPanelService.GetUserDetails(email);
-            return View();
+            var userDetails = await _adminPanelService.GetUserDetails(email);
+            return View(userDetails);
         }
     }
 }
