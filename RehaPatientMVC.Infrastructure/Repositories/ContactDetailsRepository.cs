@@ -21,7 +21,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             _context.contactDetails.Add(contactDetails);
             _context.SaveChanges();
             return contactDetails.Id;
-
         }
 
         public void DeleteContact(int contactId)
@@ -33,7 +32,5 @@ namespace RehaPatientMVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
-
-        
     }
 }

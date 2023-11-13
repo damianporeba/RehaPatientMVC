@@ -25,6 +25,4 @@ namespace RehaPatientMVC.Application.ViewModels.Patients
             RuleFor(x => x.Pesel).Length(11);
         }
     }
-
-    
 }

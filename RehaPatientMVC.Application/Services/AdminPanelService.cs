@@ -55,7 +55,6 @@ namespace RehaPatientMVC.Application.Services
         {
             var user = _userManager.FindByEmailAsync(email).Result;
             var roles = _userManager.GetRolesAsync(user).Result.AsQueryable();
-
             return roles;
         }
 

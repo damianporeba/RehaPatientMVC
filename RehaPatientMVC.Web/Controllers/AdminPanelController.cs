@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.ViewModels.AdminPanel;
 using RehaPatientMVC.Domain.Model;
+using RehaPatientMVC.Web.Configuration;
 
 namespace RehaPatientMVC.Web.Controllers
 {
+    [Authorize("Admin")]
     public class AdminPanelController : Controller
     {
         private readonly IAdminPanelService _adminPanelService;
