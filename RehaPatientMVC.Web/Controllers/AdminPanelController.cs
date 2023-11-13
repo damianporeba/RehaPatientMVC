@@ -43,7 +43,6 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> SetRoleForUser(RoleForUserVm model)
         {
-            //var userRoles = _adminPanelService.GetRolesForUser(model.Email);
             await _adminPanelService.SetRoleForUser(model.Email, model.Role);
             return RedirectToAction("Index");
         }
@@ -53,6 +52,13 @@ namespace RehaPatientMVC.Web.Controllers
         {
             await _adminPanelService.DeleteUser(email);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details (string email)
+        {
+            var userDetails = _adminPanelService.GetUserDetails(email);
+            return View();
         }
     }
 }
