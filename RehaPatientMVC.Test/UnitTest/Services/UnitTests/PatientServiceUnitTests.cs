@@ -46,15 +46,6 @@ namespace RehaPatientMVC.Test.UnitTest.Services.UnitTests
             var mockMapper = new Mock<IMapper>();
             mockMapper.Setup(s => s.Map<Patient>(It.IsAny<NewPatientVm>())).Returns(patient);
 
-            //MapperConfiguration mapperConfig = new MapperConfiguration(
-            //cfg =>
-            //{
-            //    cfg.AddProfile(new AddNewPatientMappingProfile());
-            //});
-
-            //IMapper mapper = new Mapper(mapperConfig);
-            //mapper.ConfigurationProvider.AssertConfigurationIsValid();
-
             var manager = new PatientService(mock.Object, mockMapper.Object);
 
             //Act
@@ -62,6 +53,43 @@ namespace RehaPatientMVC.Test.UnitTest.Services.UnitTests
 
             //Assert
             result.Should().Be(patient.Id);
+        }
+
+        [Fact]
+        public void CheckPatientDetailsAreEqualLikeModel()
+        {
+            //Arrange
+            Patient patient = new Patient()
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "12312312312"
+            };
+
+            PatientDetailsVm patientVm = new PatientDetailsVm()
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "12312312312"
+            };
+
+            var mock = new Mock<IPatientRepository>();
+            mock.Setup(s => s.GetPatientById(10)).Returns(patient);
+
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(s => s.Map<PatientDetailsVm>(It.IsAny<Patient>())).Returns(patientVm);
+
+            var maganer = new PatientService(mock.Object, mockMapper.Object);
+            //Act
+            var patientDetails = maganer.ViewPatientDetails(10);
+
+            //Assert
+            patientDetails.Id.Should().Be(patient.Id);
+            patientDetails.Name.Should().Be(patient.Name);
+            patientDetails.LastName.Should().Be(patient.LastName);
+            patientDetails.Pesel.Should().Be(patient.Pesel);
         }
     }
 }
