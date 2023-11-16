@@ -128,5 +128,30 @@ namespace RehaPatientMVC.Test.UnitTest.Services.UnitTests
             patientDetails.LastName.Should().Be(patient.LastName);
             patientDetails.Pesel.Should().Be(patient.Pesel);
         }
+
+        [Fact]
+        public void CheckPatientIdAreEqualWithPesel()
+        {
+            //Arrange
+            Patient patient = new Patient()
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "98082311272"
+            };
+
+            var mock = new Mock<IPatientRepository>();
+            mock.Setup(s=>s.GetPatientIdByPesel("98082411272")).Returns(10);
+            var mockMapper = new Mock<IMapper>();
+
+            var manager = new PatientService(mock.Object, mockMapper.Object);
+
+            //Act
+            var patientId = manager.GetPatientIdByPesel("98082411272");
+
+            //Assert
+            patientId.Should().Be(patient.Id);
+        }
     }
 }
