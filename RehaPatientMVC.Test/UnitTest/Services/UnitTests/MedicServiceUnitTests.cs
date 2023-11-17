@@ -14,7 +14,7 @@ using Xunit;
 
 namespace RehaPatientMVC.Test.UnitTest.Services.UnitTests
 {
-    public class MedicServiceUnitTest
+    public class MedicServiceUnitTests
     {
         [Fact]
         public void CheckMedicIdAfterAdd()
