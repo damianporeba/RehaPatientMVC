@@ -76,6 +76,5 @@ namespace RehaPatientMVC.Application.Services
             var patientId = _patientRepo.GetPatientIdByPesel(pesel);
             return patientId;
         }
-
     }
 }
