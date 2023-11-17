@@ -89,5 +89,43 @@ namespace RehaPatientMVC.Test.UnitTest.Services.UnitTests
             returnedMedic.City.Should().Be(appUser.City);
             returnedMedic.Id.Should().Be(appUser.Id);
         }
+
+        [Fact]
+        public void CheckAppUserDetailsAreEqualLikeModel()
+        {
+            //Arrange
+            AppUser appUser = new AppUser()
+            {
+                Id = 1,
+                City = "Tarnów",
+                UserLastName = "Test",
+                UserFirstName = "Test"
+            };
+
+            NewAppUserVm newAppUserVm = new NewAppUserVm()
+            {
+                Id = 1,
+                City = "Tarnów",
+                UserLastName = "Test",
+                UserFirstName = "Test"
+            };
+
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(x => x.Map<NewAppUserVm>(It.IsAny<AppUser>())).Returns(newAppUserVm);
+
+            var mockRepository = new Mock<IAppUserRepository>();
+            mockRepository.Setup(x => x.GetAppUserById(1)).Returns(appUser);
+
+            var manager = new AppUserService(mockRepository.Object, mockMapper.Object);
+
+            //Act
+            var returnedMedic = manager.ViewAppUserDetails(10);
+
+            //Assert
+            returnedMedic.UserFirstName.Should().Be(appUser.UserFirstName);
+            returnedMedic.UserLastName.Should().Be(appUser.UserLastName);
+            returnedMedic.City.Should().Be(appUser.City);
+            returnedMedic.Id.Should().Be(appUser.Id);
+        }
     }
 }
