@@ -91,5 +91,44 @@ namespace RehaPatientMVC.Test.UnitTest.Services.UnitTests
             returnedMedic.LastName.Should().Be(medic.LastName);
             returnedMedic.Id.Should().Be(medic.Id);
         }
+
+        [Fact]
+        public void CheckMedicDetailsAreEqualLikeModel()
+        {
+            //Arrange
+            Medic medic = new Medic()
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = null,
+                Profession = null
+            };
+
+            MedicDetailsVm medicVm = new MedicDetailsVm()
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = null,
+                Profession = null
+            };
+
+            var mockMapper = new Mock<IMapper>();
+            mockMapper.Setup(x => x.Map<MedicDetailsVm>(It.IsAny<Medic>())).Returns(medicVm);
+
+            var mockRepository = new Mock<IMedicRepository>();
+            mockRepository.Setup(x => x.GetMedicById(10)).Returns(medic);
+
+            var manager = new MedicService(mockMapper.Object, mockRepository.Object);
+
+            //Act
+            var returnedMedic = manager.ViewMedicDetails(10);
+
+            //Assert
+            returnedMedic.Name.Should().Be(medic.Name);
+            returnedMedic.LastName.Should().Be(medic.LastName);
+            returnedMedic.Id.Should().Be(medic.Id);
+        }
     }
 }
