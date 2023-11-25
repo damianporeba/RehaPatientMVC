@@ -42,16 +42,8 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
         }
 
         [Fact]
-        public void CheckIsPatientExistAfterRemove() 
+        public void CheckIsPatientExistAfterRemove()
         {
-            var patient = new Patient
-            {
-                Id = 10,
-                Name = "Test",
-                LastName = "Test",
-                Pesel = "98989898989"
-            };
-
             var patientToRemove = new Patient
             {
                 Id = 11,
