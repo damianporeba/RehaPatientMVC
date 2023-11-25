@@ -70,7 +70,7 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
         }
 
         [Fact]
-        public void CheckReturnedPatientList()
+        public void CheckIsExistReturnedPatientList()
         {
             //Arrange
             var patient = new Patient
@@ -106,6 +106,33 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 patientList.Should().HaveCount(2);
                 patientList.Should().Contain(patient);
                 patientList.Should().Contain(patient2);
+            }
+        }
+
+        [Fact]
+        public void CheckReturnedPatientIdFromSearchByPesel()
+        {
+            var patient = new Patient
+            {
+                Id = 11,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "12345678910"
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+                .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+                .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var patientRepository = new PatientRepository(context);
+                patientRepository.AddPatient(patient);
+                var patientId = patientRepository.GetPatientIdByPesel(patient.Pesel);
+
+                //act
+                patientId.Should().Be(11);
             }
         }
     }
