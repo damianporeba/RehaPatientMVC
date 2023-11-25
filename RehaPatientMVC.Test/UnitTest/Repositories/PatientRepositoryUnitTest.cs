@@ -69,5 +69,44 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
             }
         }
 
+        [Fact]
+        public void CheckReturnedPatientList()
+        {
+            //Arrange
+            var patient = new Patient
+            {
+                Id = 11,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "98989898989"
+            };
+
+            var patient2 = new Patient
+            {
+                Id = 12,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "98989898989"
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+                .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+                .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var patientRepository = new PatientRepository(context);
+                patientRepository.AddPatient(patient);
+                patientRepository.AddPatient(patient2);
+                var patientList = patientRepository.GetAllPatients();
+
+                //Assert
+                patientList.Should().NotBeNull();
+                patientList.Should().HaveCount(2);
+                patientList.Should().Contain(patient);
+                patientList.Should().Contain(patient2);
+            }
+        }
     }
 }
