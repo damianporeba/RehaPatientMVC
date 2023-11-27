@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
+using Microsoft.CodeAnalysis.Differencing;
 
 namespace RehaPatientMVC.Test.UnitTest.Repositories
 {
@@ -108,10 +109,38 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 var medicToAdd = medicRepository.AddMedic(medic);
                 var medicToGet = medicRepository.GetMedicById(10);
 
-                //Act
+                //Assert
                 medicToGet.Should().Be(medic);
             }
         }
 
+        [Fact]
+        public void CheckMedicExistAfterRemove()
+        {
+            var medic = new Medic
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = "Msc",
+                Profession = "Physio",
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+               .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+               .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var medicRepository = new MedicRepository(context);
+                var medicToAdd = medicRepository.AddMedic(medic);
+                medicRepository.RemoveMedic(10);
+                var result = medicRepository.GetMedicById(10);
+
+                //Assert
+                result.Should().Be(null);
+            }
+        }
     }
 }
