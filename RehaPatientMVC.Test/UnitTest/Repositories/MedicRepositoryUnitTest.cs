@@ -142,5 +142,35 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 result.Should().Be(null);
             }
         }
+
+        [Fact]
+        public void CheckReturnedListAreValidWithDegree() 
+        {
+            var medic = new Medic
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = "Msc",
+                Profession = "Physio",
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+               .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+               .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var medicRepository = new MedicRepository(context);
+                var medicToAdd = medicRepository.AddMedic(medic);
+                var medicByDegree = medicRepository.GetMedicsByDegree("Msc");
+
+                //Assert
+                medicByDegree.Should().NotBeNull();
+                medicByDegree.Should().Contain(medic);
+                medicByDegree.Should().HaveCount(1);
+            }
+        }
     }
 }
