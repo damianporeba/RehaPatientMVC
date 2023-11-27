@@ -172,5 +172,33 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 medicByDegree.Should().HaveCount(1);
             }
         }
+
+        [Fact]
+        public void CheckReturnedListMedicsForDropDownListIsNotEmpty()
+        {
+            var medic = new Medic
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = "Msc",
+                Profession = "Physio",
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+               .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+               .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var medicRepository = new MedicRepository(context);
+                var medicToAdd = medicRepository.AddMedic(medic);
+                var medicsForDropDownList = medicRepository.GetAllMedicsForDropDownList();
+
+                //Assert
+                medicsForDropDownList.Should().NotBeNull();
+            }
+        }
     }
 }
