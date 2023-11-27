@@ -17,6 +17,7 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
         [Fact]
         public void CheckMedicExistAfterAdd()
         {
+            //Arrange
             var medic = new Medic
             {
                 Id = 10,
@@ -44,6 +45,7 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
         [Fact]
         public void CheckAreReturnedMedicListIsValidWithMedics() 
         {
+            //Arrange
             var medic = new Medic
             {
                 Id = 10,
@@ -81,5 +83,35 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 medicsList.Should().Contain(medic2);
             }
         }
+
+        [Fact]
+        public void CheckValidMedicAfterGettingHimById()
+        {
+            //Arrange
+            var medic = new Medic
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = "Msc",
+                Profession = "Physio",
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+               .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+               .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var medicRepository = new MedicRepository(context);
+                var medicToAdd = medicRepository.AddMedic(medic);
+                var medicToGet = medicRepository.GetMedicById(10);
+
+                //Act
+                medicToGet.Should().Be(medic);
+            }
+        }
+
     }
 }
