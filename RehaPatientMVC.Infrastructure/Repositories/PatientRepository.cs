@@ -37,7 +37,6 @@ namespace RehaPatientMVC.Infrastructure.Repositories
             var patients = _context.referrals.Where(i => i.TypeReferral == referralType).Select(x=>x.PatientId).ToList();
             var patientsList = _context.patients.Where(x=>patients.Contains(x.Id)).AsQueryable();
             return patientsList;
-
         }
 
         public Patient GetPatientById(int patientId)
