@@ -136,6 +136,48 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
             }
         }
 
-       
+        [Fact]
+        public void CheckReturnedPatientsByTypeId()
+        {
+            //arrange
+            var patient = new Patient
+            {
+                Id = 11,
+                Name = "Test",
+                LastName = "Test",
+                Pesel = "98989898989"
+            };
+
+            var referral = new Referral
+            {
+                Id = 11,
+                Code = "0000",
+                PatientId = 11,
+                ICD10 = "M54",
+                Pesel = "98989898989",
+                TypeReferral = "Ambulatory"
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+               .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+               .Options;
+
+            //act
+            using (var context = new Context(options))
+            {
+                var patientRepository = new PatientRepository(context);
+                var referralRepository = new ReferralRepository(context);
+
+                patientRepository.AddPatient(patient);
+                referralRepository.AddReferral(referral);
+
+                var getPatientByType = patientRepository.GetPatientByType("Ambulatory");
+
+                //Assert
+                getPatientByType.Should().NotBeNull();
+                getPatientByType.Should().Equal(patient);
+
+            }
+        }
     }
 }
