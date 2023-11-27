@@ -40,5 +40,46 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 medicResult.Should().Be(10);
             }
         }
+
+        [Fact]
+        public void CheckAreReturnedMedicListIsValidWithMedics() 
+        {
+            var medic = new Medic
+            {
+                Id = 10,
+                Name = "Test",
+                LastName = "Test",
+                Degree = "Msc",
+                Profession = "Physio",
+            };
+
+            var medic2 = new Medic
+            {
+                Id = 11,
+                Name = "Test",
+                LastName = "Test",
+                Degree = "Msc",
+                Profession = "Physio",
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+               .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+               .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var medicRepository = new MedicRepository(context);
+                var medicToAdd1= medicRepository.AddMedic(medic);
+                var medicToAdd2 = medicRepository.AddMedic(medic2);
+                var medicsList = medicRepository.GetAllMedics();
+
+                //Assert
+                medicsList.Should().NotBeEmpty();
+                medicsList.Should().HaveCount(2);
+                medicsList.Should().Contain(medic);
+                medicsList.Should().Contain(medic2);
+            }
+        }
     }
 }
