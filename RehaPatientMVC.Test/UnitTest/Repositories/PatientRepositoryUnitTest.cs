@@ -64,7 +64,6 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 var patientDetails = patientRepository.GetPatientById(11);
 
                 //Assert
-
                 patientDetails.Should().BeNull();
             }
         }
@@ -176,7 +175,6 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 //Assert
                 getPatientByType.Should().NotBeNull();
                 getPatientByType.Should().Equal(patient);
-
             }
         }
     }
