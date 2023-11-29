@@ -73,5 +73,49 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
             }
         }
 
+        [Fact]
+        public void CheckReturnedListOfReferrals()
+        {
+            Referral referral = new Referral
+            {
+                Id = 10,
+                ICD10 = "M54",
+                Code = "0000",
+                Pesel = "00000000000",
+                PatientId = 1,
+                MedicId = 1,
+                TypeReferral = "Ambulatory"
+            };
+
+            Referral referral2 = new Referral
+            {
+                Id = 11,
+                ICD10 = "M54",
+                Code = "0000",
+                Pesel = "00000000001",
+                PatientId = 1,
+                MedicId = 1,
+                TypeReferral = "Ambulatory"
+            };
+            var options = new DbContextOptionsBuilder<Context>()
+                .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+                .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var refRepository = new ReferralRepository(context);
+                var AddRef1 = refRepository.AddReferral(referral);
+                var AddRef2 = refRepository.AddReferral(referral2);
+                var result = refRepository.GetAllReferrals();
+
+                //Assert
+                result.Should().NotBeEmpty();
+                result.Should().HaveCount(2);
+                result.Should().Contain(referral);
+                result.Should().Contain(referral2);
+            }
+        }
+
     }
 }
