@@ -70,5 +70,44 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 result.Should().BeNull();
             }
         }
+
+        [Fact]
+        public void CheckReturnedAppUserIsValidWithId()
+        {
+            //Arrange
+            var appUser = new AppUser
+            {
+                Id = 10,
+                UserFirstName = "Test",
+                UserLastName = "Test",
+                City = "Tarnów"
+            };
+
+            var appUser2 = new AppUser
+            {
+                Id = 11,
+                UserFirstName = "Test",
+                UserLastName = "Test",
+                City = "Tarnów"
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+                .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+                .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var appUserRepository = new AppUserRepository(context);
+                appUserRepository.AddNewAppUser(appUser);
+                appUserRepository.AddNewAppUser(appUser2);
+                var result = appUserRepository.GetAppUserById(10);
+
+                //Assert
+                result.Should().NotBeNull();
+                result.Should().NotBe(appUser2);
+                result.Should().Be(appUser);
+            }
+        }
     }
 }
