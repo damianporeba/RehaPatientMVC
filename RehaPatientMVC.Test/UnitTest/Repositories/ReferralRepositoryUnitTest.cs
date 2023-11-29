@@ -116,6 +116,5 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 result.Should().Contain(referral2);
             }
         }
-
     }
 }
