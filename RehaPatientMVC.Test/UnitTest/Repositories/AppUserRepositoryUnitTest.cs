@@ -109,5 +109,45 @@ namespace RehaPatientMVC.Test.UnitTest.Repositories
                 result.Should().Be(appUser);
             }
         }
+
+        [Fact]
+        public void CheckReturnedListIsValidWithModels()
+        {
+            //Arrange
+            var appUser = new AppUser
+            {
+                Id = 10,
+                UserFirstName = "Test",
+                UserLastName = "Test",
+                City = "Tarnów"
+            };
+
+            var appUser2 = new AppUser
+            {
+                Id = 11,
+                UserFirstName = "Test",
+                UserLastName = "Test",
+                City = "Tarnów"
+            };
+
+            var options = new DbContextOptionsBuilder<Context>()
+                .UseInMemoryDatabase(databaseName: "RehaPatientMVC")
+                .Options;
+
+            //Act
+            using (var context = new Context(options))
+            {
+                var appUserRepository = new AppUserRepository(context);
+                appUserRepository.AddNewAppUser(appUser);
+                appUserRepository.AddNewAppUser(appUser2);
+                var result = appUserRepository.GetAllAppUser();
+
+                //Assert
+                result.Should().NotBeNullOrEmpty();
+                result.Should().HaveCount(2);
+                result.Should().Contain(appUser2);
+                result.Should().Contain(appUser);
+            }
+        }
     }
 }
