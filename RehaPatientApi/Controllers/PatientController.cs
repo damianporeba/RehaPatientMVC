@@ -75,7 +75,7 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("EditPatient/{id}")]
+        [HttpGet("/{id}")]
         public ActionResult<NewPatientVm> EditPatient(int id)
         {
             var model = _patientService.GetPatientForEdit(id);
@@ -86,7 +86,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpPost("EditPatient")]
+        [HttpPut]
         public ActionResult EditPatient([FromBody] NewPatientVm newPatientVm)
         {
             _patientService.UpdatePatient(newPatientVm);
