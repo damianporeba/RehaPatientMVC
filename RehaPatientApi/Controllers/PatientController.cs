@@ -61,7 +61,7 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("PatientDetails/{id}")]
+        [HttpGet("/{id}")]
         public ActionResult PatientDetails (int id)
         {
             var details = _patientService.ViewPatientDetails(id);
