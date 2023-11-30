@@ -54,18 +54,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpGet("AddPatient")]
-        public ActionResult<NewPatientVm> AddPatient()
-        {
-            var model = new NewPatientVm();
-            if (model == null)
-            {
-                return NotFound();
-            }
-            return Ok(model);
-        }
-
-        [HttpPost("AddPatient")]
+        [HttpPost]
         public ActionResult AddPatient([FromBody] NewPatientVm newPatientVm)
         {
             var id = _patientService.AddPatient(newPatientVm);
