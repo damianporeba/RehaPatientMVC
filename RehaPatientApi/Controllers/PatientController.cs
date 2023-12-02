@@ -50,7 +50,7 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public ActionResult EditPatient([FromBody] NewPatientVm newPatientVm)
         {
             _patientService.UpdatePatient(newPatientVm);
