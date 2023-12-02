@@ -18,7 +18,7 @@ namespace RehaPatientApi.Controllers
             _medicService = medicService;
         }
 
-        [HttpGet("Index")]
+        [HttpGet]
         public ActionResult<ListMedicForListVm> Index()
         {
             var model = _medicService.GetAllMedicsForList(3, 1, "");
@@ -29,41 +29,7 @@ namespace RehaPatientApi.Controllers
             return Ok(model);
         }
 
-        [HttpPost("Index")]
-        public ActionResult Index([FromBody] SearchInListVm searchInListVm)
-        {
-            var pageNumber = searchInListVm.pageNumber;
-            var searchString = searchInListVm.searchString;
-
-            if (pageNumber == 0)
-            {
-                pageNumber = 1;
-            }
-
-            if (searchString == null)
-            {
-                searchString = string.Empty;
-            }
-
-            var model = _medicService.GetAllMedicsForList(searchInListVm.pageSize, pageNumber, searchString);
-            if (model == null)
-            {
-                return NotFound();
-            }
-            return Ok(model);
-        }
-
-        [HttpGet("AddNewMedic")]
-        public ActionResult<NewMedicVm> AddNewMedic()
-        {
-            var model = new NewMedicVm();
-            if (model == null)
-            {
-                return NotFound();
-            }
-            return Ok(model);
-        }
-        [HttpPost("AddNewMedic")]
+        [HttpPost]
         public ActionResult AddNewMedic([FromBody] NewMedicVm medicModel)
         {
             var id = _medicService.AddMedic(medicModel);
@@ -77,7 +43,7 @@ namespace RehaPatientApi.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("MedicDetails/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<MedicDetailsVm> MedicDetails(int id)
         {
             var model = _medicService.ViewMedicDetails(id);
@@ -98,13 +64,5 @@ namespace RehaPatientApi.Controllers
             }
             return Ok(model);
         }
-        
-        [HttpPost("EditMedic")]
-        public ActionResult EditMedic([FromBody] NewMedicVm medicModel)
-        {
-            _medicService.UpdateMedic(medicModel);
-            return RedirectToAction("Index");
-        }
     }
-
 }
