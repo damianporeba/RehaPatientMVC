@@ -37,14 +37,14 @@ namespace RehaPatientApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult PatientDetails (int id)
+        public ActionResult PatientDetails ([FromRoute] int id)
         {
             var details = _patientService.ViewPatientDetails(id);
             return Ok(details);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeletePatient(int id)
+        public ActionResult DeletePatient([FromRoute] int id)
         {
             _patientService.DeletePatient(id);
             return RedirectToAction("Index");
