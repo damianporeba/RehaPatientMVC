@@ -37,14 +37,14 @@ namespace RehaPatientApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteMedic(int id)
+        public ActionResult DeleteMedic([FromRoute] int id)
         {
             _medicService.DeleteMedic(id);
             return RedirectToAction("Index");
         }
 
         [HttpGet("{id}")]
-        public ActionResult<MedicDetailsVm> MedicDetails(int id)
+        public ActionResult<MedicDetailsVm> MedicDetails([FromRoute] int id)
         {
             var model = _medicService.ViewMedicDetails(id);
             if (model == null)
@@ -55,7 +55,7 @@ namespace RehaPatientApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<NewMedicVm> EditMedic(int id)
+        public ActionResult<NewMedicVm> EditMedic([FromRoute] int id)
         {
             var model = _medicService.GetMedicForEdit(id);
             if(model == null)
