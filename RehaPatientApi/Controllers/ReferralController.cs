@@ -36,7 +36,7 @@ namespace RehaPatientApi.Controllers
         }
 
         [HttpDelete("{Id}")]
-        public ActionResult<NewReferralVm> DeleteReferral(int id)
+        public ActionResult<NewReferralVm> DeleteReferral([FromRoute] int id)
         {
             _referralService.DeleteReferral(id); 
             return RedirectToAction("Index");
