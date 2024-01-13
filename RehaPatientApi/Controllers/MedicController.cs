@@ -64,5 +64,12 @@ namespace RehaPatientApi.Controllers
             }
             return Ok(model);
         }
+
+        [HttpGet("{medicDegree}")]
+        public ActionResult GetMedicByDegree([FromRoute] string medicDegree)
+        {
+            var model = _medicService.GetMedicsByDegree(medicDegree);
+            return Ok(model);
+        }
     }
 }

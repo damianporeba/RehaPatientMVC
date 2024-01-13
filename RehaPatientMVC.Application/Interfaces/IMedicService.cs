@@ -20,5 +20,6 @@ namespace RehaPatientMVC.Application.Interfaces
         void UpdateMedic(NewMedicVm model);
         void DeleteMedic(int id);
         List<Medic> GetAllMedicsForDropDownList();
+        IEnumerable<Medic> GetMedicsByDegree(string medicDegree);
     }
 }
