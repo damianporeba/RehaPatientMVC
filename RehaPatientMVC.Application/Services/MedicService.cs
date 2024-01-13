@@ -73,5 +73,11 @@ namespace RehaPatientMVC.Application.Services
             var medicList = _medicRepo.GetAllMedicsForDropDownList();
             return medicList;
         }
+
+        public IEnumerable<Medic> GetMedicsByDegree(string medicDegree)
+        {
+            var medicList = _medicRepo.GetMedicsByDegree(medicDegree);
+            return medicList;
+        }
     }
 }
