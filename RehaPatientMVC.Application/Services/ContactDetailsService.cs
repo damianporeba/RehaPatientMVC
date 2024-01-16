@@ -30,7 +30,7 @@ namespace RehaPatientMVC.Application.Services
 
         public void DeleteContactDetails(int id)
         {
-            throw new NotImplementedException();
+            _contactDetailsRepository.DeleteContact(id);
         }
     }
 }
