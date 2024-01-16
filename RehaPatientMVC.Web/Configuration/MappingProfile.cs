@@ -6,6 +6,7 @@ using AutoMapper;
 using RehaPatientMVC.Application.MappingProfile.Referral;
 using RehaPatientMVC.Application.MappingProfile.AppUser;
 using RehaPatientMVC.Application.MappingProfile.AdminPanel;
+using RehaPatientMVC.Application.MappingProfile.ContactDetails;
 
 namespace RehaPatientMVC.Web.Configuration
 {
@@ -34,6 +35,9 @@ namespace RehaPatientMVC.Web.Configuration
             services.AddAutoMapper(typeof(UsersForListVmMappingProfile));
             services.AddAutoMapper(typeof(RoleForUserVmMappingProfile));
             services.AddAutoMapper(typeof(UserDetailsVmMappingProfile));
+
+            services.AddAutoMapper(typeof(NewContactDetailsVmMappingProfile));
+            services.AddAutoMapper(typeof(NewContactDetailsVmToContactDetailsMappingProfile));
 
             return services;
         }
