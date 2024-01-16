@@ -25,7 +25,7 @@ namespace RehaPatientMVC.Infrastructure.Repositories
 
         public void DeleteContact(int contactId)
         {
-            var contact = _context.contactDetails.Find(contactId);
+            var contact = _context.contactDetails.FirstOrDefault(i => i.Id == contactId);
             if (contactId != null)
             {
                 _context.contactDetails.Remove(contact);

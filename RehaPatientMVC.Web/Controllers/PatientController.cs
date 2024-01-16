@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RehaPatientMVC.Application.Interfaces;
 using RehaPatientMVC.Application.Services;
+using RehaPatientMVC.Application.ViewModels.ContactDetails;
 using RehaPatientMVC.Application.ViewModels.Patients;
 
 namespace RehaPatientMVC.Web.Controllers
@@ -9,11 +10,13 @@ namespace RehaPatientMVC.Web.Controllers
     [Authorize]
     public class PatientController : Controller
     {
-    
+
         private readonly IPatientService _patientService;
-        public PatientController(IPatientService patientService) 
+        private readonly IContactDetailsService _contactDetailsService;
+        public PatientController(IPatientService patientService, IContactDetailsService contactDetailsService)
         {
             _patientService = patientService;
+            _contactDetailsService = contactDetailsService;
         }
 
         [HttpGet]
@@ -31,7 +34,7 @@ namespace RehaPatientMVC.Web.Controllers
                 pageNo = 1;
             }
 
-            if(searchString is null)
+            if (searchString is null)
             {
                 searchString = string.Empty;
             }
@@ -49,7 +52,7 @@ namespace RehaPatientMVC.Web.Controllers
         [HttpPost]
         public IActionResult AddPatient(NewPatientVm model)
         {
-            var id = _patientService.AddPatient(model); 
+            var id = _patientService.AddPatient(model);
             return RedirectToAction("Index");
         }
 
@@ -69,17 +72,32 @@ namespace RehaPatientMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewPatient (int id)
+        public IActionResult ViewPatient(int id)
         {
             var patientModel = _patientService.ViewPatientDetails(id);
             return View(patientModel);
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Delete (int id)
+        public IActionResult Delete(int id)
         {
-            _patientService.DeletePatient(id); 
-            return RedirectToAction("Index"); 
+            _patientService.DeletePatient(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult AddNewContactDetails()
+        {
+            return View(new NewContactDetailsVm());
+        }
+
+        [HttpPost]
+        public IActionResult AddNewContactDetails(NewContactDetailsVm model)
+        {
+            //zrobić listę wyboru konkretnego pacjenta z ViewBag
+
+            var id = _contactDetailsService.AddContactDetails(model);
+            return RedirectToAction("Index");
         }
     }
 }
